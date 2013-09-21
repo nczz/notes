@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh_TW">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <title>專案-台鐵訂票小幫手 - 隨手筆記
+    </title>
+    <link rel="alternate" href="http://log.mxp.tw/feed.xml" type="application/rss+xml" title="知識得之於人，所以也將自己的筆記放上網希望能有點貢獻，這也是種 OpenSource 吧！ ：）">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic|Anonymous+Pro:400,700,400italic,700italic|Merriweather:400,700,300">
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  </head>
+  <body class="article-detail">
+    <header class="header">
+      <div class="content-wrap">
+        <h1>專案-台鐵訂票小幫手</h1>
+        <p class="author">Written by <span class="author"><a href="mailto:im@mxp.tw">莫小屁</a></span>
+        </p>
+      </div>
+    </header>
+    <div id="content">
+      <div class="content-wrap">
+        <article class="article">
+          <section class="content"><h4>前言</h4>
+<blockquote>
+<p>主題是團隊合作的開始，期望值的環境是：「幾人小組」、「協同開發」、「版本控制」、「分工合作」，&nbsp;台鐵這個主題是研究室同學想的，只因為他常常半夜再幫他或是他女友搶火車票，很賭爛<span class="caps">XD</span></p>
+</blockquote>
+<p><span class="more"><sapn></p>
+<h4>主題</h4>
+<p>前些日子還沒這麼忙的時候，有個想法是「找人合夥做點事」，想當然爾，看到他這麼熱血的想解決這個問題我也跟著起來規劃。</p>
+<p>心想可以藉此機會把大夥給 team&nbsp;起來，於是著手研究「問題」，如下所列</p>
+<ol>
+<li>因為訂票流程不夠直覺，所以卡！&nbsp;需要設計快速訂票的流程</li>
+<li>自動訂票，但卡在<a href="http://railway.hinet.net/Public/main_1_16.html" title="台鐵網站針對自動訂票的說明">法規</a>與驗證(<a href="http://zh.wikipedia.org/wiki/%E9%AA%8C%E8%AF%81%E7%A0%81" title="Wiki: 全自動區分電腦和人類的圖靈測試（英語：Completely Automated Public Turing test to tell Computers and Humans Apart，簡稱CAPTCHA），俗稱驗證碼，是一種區分使用者是電腦和人的公共全自動程式。"><span class="caps">CAPTCHA</span></a>) </li>
+</ol>
+<p>補 最近新聞： <a href="http://www.ettoday.net/news/20130913/269733.htm" title="「地下局長」外掛秒殺台鐵票 2個月搶50萬張年獲百萬">Link1</a> 、 <a href="http://www.appledaily.com.tw/appledaily/article/headline/20130919/35305060/" title="火車票神 幫學弟妹搶票495張">Link2</a></p>
+<p>第一個問題，訂票流程改善方式就是寫程式去爬台鐵網站的<a href="http://163.29.3.98/xml/" title="鐵路時刻表(XML格式)">資料</a>再將整個訂票頁面設計過就好！
+不過第二個問題就要影像處理(<a href="http://zh.wikipedia.org/wiki/%E5%85%89%E5%AD%A6%E5%AD%97%E7%AC%A6%E8%AF%86%E5%88%AB" title="Wiki: Optical Character Recognition, 是指對文字資料的影像檔案進行分析處理，獲取文字及版面訊息的過程。"><span class="caps">OCR</span></a>)的技術來解決，但因為有些敏感，就不細談。還好實驗室的&nbsp;同學包括我自己都是影像處理的領域，這部份還玩的下去<span class="caps">XD</span></p>
+<p>專案開在 <a href="https://github.com/nczz/TRATicketHelper" title="台鐵訂票小幫手">Github</a> 上，是第一版(硬幹)的重構改寫，因開學後事情不少，慢慢改…&nbsp;<span class="caps">OCR</span>目前測辨識成功率有9成，但那部份就不會放出來了。</p>
+<p>使用的工具是 NodeJS + <a href="http://express-io.org/" title="ExpressJS + Socket.IO">ExpressJS.<span class="caps">IO</span></a></p>
+<p>這邊有幾點筆記：</p>
+<ol>
+<li>要爬台鐵網站進行訂票一定要取得 session&nbsp;cookie，直接爬訂票頁面會發生錯誤</li>
+<li>爬時刻表網站需要 zLib&nbsp;解壓縮</li>
+</ol>
+<h4>結語</h4>
+<p>其實做甚麼軟體，對會寫程式的人只需要一個東西叫做「時間」，想法再多也需要實現才能證明，
+技術精進與否也不在我的考量了，同一種技術抓到要領後就沒有必要過份的追尋，為了技術而技術不會幫助你成長，
+學習到某種程度後會發現，要切入技術不用花太多時間，花最多的時間在找尋一個叫做「適合」，&nbsp;那需要經驗的，所以只有讓自己多接觸挑戰多面對各種難題才會進步。</p>
+<p>做研究時，老闆特別叮嚀不要搞系統，是條不歸路。我想在那時候，關於「資訊工程」就有個新的開始了！</p>
+<p><span class="caps">OS</span>: 有些實驗性的程式，結果達到後要我重構再放出真的好懶阿 囧n&nbsp;慢慢的培養這個良好習慣吧。</p>
+</section>
+        </article>
+      </div>
+    </div>
+    <footer>
+      <div class="content-wrap">
+        <div class="nav"><a href="/">« 回首頁</a></div>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+          var disqus_shortname = 'log-mxp';
+          (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+        <noscript>
+          <Please>enable JavaScript to view the<a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></Please><a href="http://disqus.com" class="dsq-brlink">
+            <comments>powered by</comments><span class="logo-disqus">Disqus</span></a>
+        </noscript>
+        <section class="copy">
+          <p>&copy; 2013 莫小屁 &mdash; powered by&nbsp;<a href="https://github.com/jnordberg/wintersmith">Wintersmith</a>
+          </p>
+        </section>
+      </div>
+    </footer>
+    <script>$(document).ready(function(){ $('a').click(function(){ $(this).attr("href",$(this).attr("href")+'?t='+Date.now());}); });</script>
+    <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-44220076-1', 'mxp.tw');ga('send', 'pageview');</script>
+  </body>
+</html>

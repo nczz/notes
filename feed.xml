@@ -5,9 +5,127 @@
     <atom:link href="http://log.mxp.tw/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://log.mxp.tw</link>
     <description>知識得之於人，所以也將自己的筆記放上網希望能有點貢獻，這也是種 OpenSource 吧！ ：）</description>
-    <pubDate>Fri, 20 Sep 2013 23:16:00 +0800</pubDate>
+    <pubDate>Sat, 21 Sep 2013 15:21:00 +0800</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
+    <item>
+      <title>使用 Wintersmith 建置 Github Blog</title>
+      <link>http://log.mxp.tw/articles/Build_Github_Blog/</link>
+      <pubDate>Sat, 21 Sep 2013 15:21:00 +0800</pubDate>
+      <guid isPermaLink="true">http://log.mxp.tw/articles/Build_Github_Blog/</guid>
+      <author></author>
+      <description>&lt;h4&gt;前言&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;不是每個人都喜歡這麼喜歡「自訂」，甚麼都要自己來。但有一點是我特別在意的就是「資料」與「環境」。
+Blog 環境分成 &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;自己架設&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://zh.wikipedia.org/wiki/%E9%83%A8%E8%90%BD%E6%A0%BC%E6%9C%8D%E5%8A%A1%E6%8F%90%E4%BE%9B%E5%95%86&quot; title=&quot;Wiki: 部落格服務提供商 (英文：Blog Service Provider，縮寫BSP)的作用是為申請者提供寫blog的空間與相應的技術支援，大大簡化blog的建立過程，推動大眾化發展。部落格服務提供商分為「收費部落格託管商」、「免費部落格託管商」及二者兼營的部落格託管商。&quot;&gt;BSP&lt;/a&gt; 服務&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;span class=&quot;more&quot;&gt;&lt;sapn&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;兩個選項都試過，但是一直卡在資料放別人那甚麼時後掛不知道阿(抖)
+自己架設又多一個煩惱 「主機可能隨時會掛，資料又會爆炸阿」，這麼煩就產生一個念頭，簡單、資料在本地、雲端備份，又可以線上發佈，找來找去就屬 &lt;code&gt;Github&lt;/code&gt; 合適！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;Github 只能存放靜態 html 檔，所以需要工具產生靜態檔來呈現&lt;/code&gt;&lt;/pre&gt;
+&lt;h4&gt;準備&lt;/h4&gt;
+&lt;p&gt;需要背景：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;http://nodejs.org/&quot; title=&quot;用 JavaScript 打造一個世界吧！&quot;&gt;NodeJS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://git-scm.com/&quot; title=&quot;版本控制的好工具阿&quot;&gt;Git&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/&quot; title=&quot;這篇 Blog 架設的主站，也是技術得社群網站&quot;&gt;Github&lt;/a&gt; &amp;amp; pages 的操作 &lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.dropbox.com/&quot; title=&quot;雲端硬碟，選項，讓 Blog 可攜&quot;&gt;Dropbox&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://markdown.tw/&quot; title=&quot;寫 Blog 的文字編輯語法&quot;&gt;Markdown&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/jnordberg/wintersmith&quot; title=&quot;本篇主角&quot;&gt;Wintersmith&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4&gt;開始&lt;/h4&gt;
+&lt;p&gt;Step1. &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;先安裝 Wintersmith 背景執行&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;npm install wintersmith -g&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Step2. &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在 Dropbox 下建立一個要放 Blog 的目錄 &lt;code&gt;notes&lt;/code&gt; (舉例)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Step3.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;到 Github &lt;a href=&quot;https://github.com/new&quot; title=&quot;點我&quot;&gt;建立&lt;/a&gt;一個 &lt;code&gt;repository&lt;/code&gt; notes (舉例)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Step4.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;建立 repo 分支，有自動跟手動的方法！ 這邊只介紹手動。到 notes 目錄下輸入&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;git clone https://github.com/nczz/notes.git
+
+git checkout --orphan gh-pages&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;新增一個 source 目錄放置編譯前的 Blog 原始檔，再新增一個 .gitignore 檔案過慮這個目錄不要上傳&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;檔案內容:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;source/&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Step5. &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;使用 wintersmith 在 source 這個目錄新增一個 Blog&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;wintersmith new path/to/notes/source&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;有提示錯誤的話就給他加上個 &lt;code&gt;--force&lt;/code&gt; 強制寫入&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;再來就是到那個目錄下開始東改西改拉，改成自己想要的版型跟想紀錄的文章&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;預覽的指令是：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cd path/to/notes/source
+
+wintersmith preview&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;邊改可以邊開瀏覽器 輸入: &lt;code&gt;http://localhost:8080/&lt;/code&gt; 觀察，改好後想發佈就是輸入下面指令&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;wintersmith build&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;在 source 目錄下會看到一個 &lt;code&gt;build&lt;/code&gt; 目錄，將資料夾內的所有檔案剪下到 &lt;code&gt;notes&lt;/code&gt; 目錄下後輸入&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;git add .
+
+git commit -a -m &amp;quot;My first github blog&amp;quot;
+
+git push origin gh-pages&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Step6.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;到這邊就差不多了，還有一點就是「可攜 (portable)」這件事！ 其實也滿簡單的，就是在 source 目錄下輸入&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;npm install wintersmith&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;把 wintersmith 裝到這個目錄下後只需要再加兩個 batch file / shell script 來控制就好，分別是「preview」跟「build」&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;preview&lt;/code&gt; 指令是&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;node node_modules/wintersmith/bin/wintersmith preview&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;build&lt;/code&gt; 指令是&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;rm -r build (Linux) 或 rmdir build /s /q (Windows) #刪除 build 這資料夾重新產生
+node node_modules/wintersmith/bin/wintersmith build&lt;/code&gt;&lt;/pre&gt;
+&lt;h4&gt;結語&lt;/h4&gt;
+&lt;p&gt;這篇筆記寫的很通用，適合有點基礎技術操作的人。在 Windows 與 Linux 下都通用。&lt;/p&gt;
+&lt;p&gt;對我來說，扣除這些基礎建設後的操作模式就只剩下&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;點開 &lt;em&gt;preview&lt;/em&gt; 的執行檔&lt;/li&gt;
+&lt;li&gt;去 source/contents/articles 目錄下新增一篇文章&lt;/li&gt;
+&lt;li&gt;打開瀏覽器預覽結果，編輯完成後再執行 &lt;em&gt;build&lt;/em&gt; 指令&lt;/li&gt;
+&lt;li&gt;剪下 build 目錄下的檔案，蓋到 notes 目錄下， commit &amp;amp; push &lt;/li&gt;
+&lt;li&gt;Done!&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;所有文章都會跟著 Dropbox 跑，換台電腦也是一樣！&lt;/p&gt;
+&lt;h4&gt;參考&lt;/h4&gt;
+&lt;p&gt;網路上還有一些教學、工具，但要一個自己順手的不容易，所以直接點連結去參考吧！&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://help.github.com/articles/using-jekyll-with-pages&quot; title=&quot;官方推薦&quot;&gt;jekyll&lt;/a&gt; &lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://octopress.org/&quot; title=&quot;滿多人用這個&quot;&gt;Octopress&lt;/a&gt; &lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://zespia.tw/hexo/&quot; title=&quot;台灣人寫的喔！&quot;&gt;hexo&lt;/a&gt; &lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://blog.kejyun.com/2013/06/Build-Web-Page-On-Github.html&quot; title=&quot;網友細心整理的分享&quot;&gt;在 Github 建立靜態網站&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
     <item>
       <title>Hello World!</title>
       <link>http://log.mxp.tw/articles/Hello_World/</link>

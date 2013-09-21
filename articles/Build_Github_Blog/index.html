@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh_TW">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <title>使用 Wintersmith 建置 Github Blog - 隨手筆記
+    </title>
+    <link rel="alternate" href="http://log.mxp.tw/feed.xml" type="application/rss+xml" title="知識得之於人，所以也將自己的筆記放上網希望能有點貢獻，這也是種 OpenSource 吧！ ：）">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic|Anonymous+Pro:400,700,400italic,700italic|Merriweather:400,700,300">
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  </head>
+  <body class="article-detail">
+    <header class="header">
+      <div class="content-wrap">
+        <h1>使用 Wintersmith 建置 Github Blog</h1>
+        <p class="author">Written by <span class="author"><a href="mailto:im@mxp.tw">莫小屁</a></span>
+        </p>
+      </div>
+    </header>
+    <div id="content">
+      <div class="content-wrap">
+        <article class="article">
+          <section class="content"><h4>前言</h4>
+<blockquote>
+<p>不是每個人都喜歡這麼喜歡「自訂」，甚麼都要自己來。但有一點是我特別在意的就是「資料」與「環境」。
+Blog&nbsp;環境分成 </p>
+<ol>
+<li>自己架設</li>
+<li><a href="http://zh.wikipedia.org/wiki/%E9%83%A8%E8%90%BD%E6%A0%BC%E6%9C%8D%E5%8A%A1%E6%8F%90%E4%BE%9B%E5%95%86" title="Wiki: 部落格服務提供商 (英文：Blog Service Provider，縮寫BSP)的作用是為申請者提供寫blog的空間與相應的技術支援，大大簡化blog的建立過程，推動大眾化發展。部落格服務提供商分為「收費部落格託管商」、「免費部落格託管商」及二者兼營的部落格託管商。"><span class="caps">BSP</span></a>&nbsp;服務</li>
+</ol>
+</blockquote>
+<p><span class="more"><sapn></p>
+<blockquote>
+<p>兩個選項都試過，但是一直卡在資料放別人那甚麼時後掛不知道阿(抖)
+自己架設又多一個煩惱 「主機可能隨時會掛，資料又會爆炸阿」，這麼煩就產生一個念頭，簡單、資料在本地、雲端備份，又可以線上發佈，找來找去就屬 <code>Github</code> 合適！</p>
+</blockquote>
+<pre><code>Github 只能存放靜態 html 檔，所以需要工具產生靜態檔來呈現</code></pre>
+<h4>準備</h4>
+<p>需要背景：</p>
+<ol>
+<li><a href="http://nodejs.org/" title="用 JavaScript 打造一個世界吧！">NodeJS</a></li>
+<li><a href="http://git-scm.com/" title="版本控制的好工具阿">Git</a></li>
+<li><a href="https://github.com/" title="這篇 Blog 架設的主站，也是技術得社群網站">Github</a> <span class="amp">&amp;</span> pages&nbsp;的操作 </li>
+<li><a href="https://www.dropbox.com/" title="雲端硬碟，選項，讓 Blog 可攜">Dropbox</a></li>
+<li><a href="http://markdown.tw/" title="寫 Blog 的文字編輯語法">Markdown</a></li>
+<li><a href="https://github.com/jnordberg/wintersmith" title="本篇主角">Wintersmith</a></li>
+</ol>
+<h4>開始</h4>
+<p>Step1. </p>
+<blockquote>
+<p>先安裝 Wintersmith&nbsp;背景執行</p>
+</blockquote>
+<pre><code>npm install wintersmith -g</code></pre>
+<p>Step2. </p>
+<blockquote>
+<p>在 Dropbox 下建立一個要放 Blog 的目錄 <code>notes</code> (舉例)</p>
+</blockquote>
+<p>Step3.</p>
+<blockquote>
+<p>到 Github <a href="https://github.com/new" title="點我">建立</a>一個 <code>repository</code> notes&nbsp;(舉例)</p>
+</blockquote>
+<p>Step4.</p>
+<blockquote>
+<p>建立 repo 分支，有自動跟手動的方法！ 這邊只介紹手動。到 notes&nbsp;目錄下輸入</p>
+</blockquote>
+<pre><code>git clone https://github.com/nczz/notes.git
+
+git checkout --orphan gh-pages</code></pre>
+<blockquote>
+<p>新增一個 source 目錄放置編譯前的 Blog 原始檔，再新增一個 .gitignore&nbsp;檔案過慮這個目錄不要上傳</p>
+</blockquote>
+<p>檔案內容:</p>
+<pre><code>source/</code></pre>
+<p>Step5. </p>
+<blockquote>
+<p>使用 wintersmith 在 source 這個目錄新增一個&nbsp;Blog</p>
+</blockquote>
+<pre><code>wintersmith new path/to/notes/source</code></pre>
+<p>有提示錯誤的話就給他加上個 <code>--force</code> 強制寫入</p>
+<blockquote>
+<p>再來就是到那個目錄下開始東改西改拉，改成自己想要的版型跟想紀錄的文章</p>
+</blockquote>
+<p>預覽的指令是：</p>
+<pre><code>cd path/to/notes/source
+
+wintersmith preview</code></pre>
+<blockquote>
+<p>邊改可以邊開瀏覽器 輸入: <code>http://localhost:8080/</code> 觀察，改好後想發佈就是輸入下面指令</p>
+</blockquote>
+<pre><code>wintersmith build</code></pre>
+<blockquote>
+<p>在 source 目錄下會看到一個 <code>build</code> 目錄，將資料夾內的所有檔案剪下到 <code>notes</code> 目錄下後輸入</p>
+</blockquote>
+<pre><code>git add .
+
+git commit -a -m &quot;My first github blog&quot;
+
+git push origin gh-pages</code></pre>
+<p>Step6.</p>
+<blockquote>
+<p>到這邊就差不多了，還有一點就是「可攜 (portable)」這件事！ 其實也滿簡單的，就是在 source&nbsp;目錄下輸入</p>
+</blockquote>
+<pre><code>npm install wintersmith</code></pre>
+<blockquote>
+<p>把 wintersmith 裝到這個目錄下後只需要再加兩個 batch file / shell script&nbsp;來控制就好，分別是「preview」跟「build」</p>
+<p><code>preview</code> 指令是</p>
+</blockquote>
+<pre><code>node node_modules/wintersmith/bin/wintersmith preview</code></pre>
+<blockquote>
+<p><code>build</code> 指令是</p>
+</blockquote>
+<pre><code>rm -r build (Linux) 或 rmdir build /s /q (Windows) #刪除 build 這資料夾重新產生
+node node_modules/wintersmith/bin/wintersmith build</code></pre>
+<h4>結語</h4>
+<p>這篇筆記寫的很通用，適合有點基礎技術操作的人。在 Windows 與 Linux&nbsp;下都通用。</p>
+<p>對我來說，扣除這些基礎建設後的操作模式就只剩下</p>
+<ol>
+<li>點開 <em>preview</em>&nbsp;的執行檔</li>
+<li>去 source/contents/articles&nbsp;目錄下新增一篇文章</li>
+<li>打開瀏覽器預覽結果，編輯完成後再執行 <em>build</em>&nbsp;指令</li>
+<li>剪下 build 目錄下的檔案，蓋到 notes 目錄下， commit <span class="amp">&amp;</span>&nbsp;push </li>
+<li>Done!</li>
+</ol>
+<p>所有文章都會跟著 Dropbox&nbsp;跑，換台電腦也是一樣！</p>
+<h4>參考</h4>
+<p>網路上還有一些教學、工具，但要一個自己順手的不容易，所以直接點連結去參考吧！</p>
+<ol>
+<li><a href="https://help.github.com/articles/using-jekyll-with-pages" title="官方推薦">jekyll</a> </li>
+<li><a href="http://octopress.org/" title="滿多人用這個">Octopress</a> </li>
+<li><a href="http://zespia.tw/hexo/" title="台灣人寫的喔！">hexo</a> </li>
+<li><a href="http://blog.kejyun.com/2013/06/Build-Web-Page-On-Github.html" title="網友細心整理的分享">在 Github&nbsp;建立靜態網站</a></li>
+</ol>
+</section>
+        </article>
+      </div>
+    </div>
+    <footer>
+      <div class="content-wrap">
+        <div class="nav"><a href="/">« 回首頁</a></div>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+          var disqus_shortname = 'log-mxp';
+          (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+        <noscript>
+          <Please>enable JavaScript to view the<a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></Please><a href="http://disqus.com" class="dsq-brlink">
+            <comments>powered by</comments><span class="logo-disqus">Disqus</span></a>
+        </noscript>
+        <section class="copy">
+          <p>&copy; 2013 莫小屁 &mdash; powered by&nbsp;<a href="https://github.com/jnordberg/wintersmith">Wintersmith</a>
+          </p>
+        </section>
+      </div>
+    </footer>
+    <script>$(document).ready(function(){ $('a').click(function(){ $(this).attr("href",$(this).attr("href")+'?t='+Date.now());}); });</script>
+  </body>
+</html>

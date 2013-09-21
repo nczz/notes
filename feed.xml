@@ -4,7 +4,7 @@
     <title>隨手筆記</title>
     <atom:link href="http://log.mxp.tw/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://log.mxp.tw</link>
-    <description>知識得之於人，所以也將自己的筆記放上網希望能有點貢獻，這也是種OpenSource吧！ ：）</description>
+    <description>知識得之於人，所以也將自己的筆記放上網希望能有點貢獻，這也是種 OpenSource 吧！ ：）</description>
     <pubDate>Fri, 20 Sep 2013 23:16:00 +0800</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>

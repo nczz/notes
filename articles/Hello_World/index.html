@@ -8,7 +8,7 @@
     <meta http-equiv="expires" content="0">
     <title>Hello World! - 隨手筆記
     </title>
-    <link rel="alternate" href="http://log.mxp.tw/feed.xml" type="application/rss+xml" title="Demo Site...">
+    <link rel="alternate" href="http://log.mxp.tw/feed.xml" type="application/rss+xml" title="知識得之於人，所以也將自己的筆記放上網希望能有點貢獻，這也是種OpenSource吧！ ：）">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic|Anonymous+Pro:400,700,400italic,700italic|Merriweather:400,700,300">
     <link rel="stylesheet" href="/css/main.css">
   </head>
@@ -45,6 +45,19 @@
     <footer>
       <div class="content-wrap">
         <div class="nav"><a href="/">« 回首頁</a></div>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+          var disqus_shortname = 'log-mxp';
+          (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+        <noscript>
+          <Please>enable JavaScript to view the<a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></Please><a href="http://disqus.com" class="dsq-brlink">
+            <comments>powered by</comments><span class="logo-disqus">Disqus</span></a>
+        </noscript>
         <section class="copy">
           <p>&copy; 2013 莫小屁 &mdash; powered by&nbsp;<a href="https://github.com/jnordberg/wintersmith">Wintersmith</a>
           </p>

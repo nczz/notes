@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width">
     <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
     <title>Hello World! - 隨手筆記
     </title>
     <link rel="alternate" href="http://log.mxp.tw/feed.xml" type="application/rss+xml" title="Demo Site...">
@@ -22,12 +23,21 @@
     <div id="content">
       <div class="content-wrap">
         <article class="article">
-          <section class="content"><p>中秋連假稍微有點閒就來把一些未完成的項目解決，其中一個就是「Github blog」，
-找了一些 framework 用來產生靜態站似乎又太肥，最後看到這套 <strong>wintersmith</strong>，
-純粹用 nodejs 來產生網站，配合線上看結果再輸出，還不錯!<br><span class="more"></span></p>
-<p>現在需要想一下怎麼讓這整套可以跟著我的 dropbox&nbsp;走！  </p>
-<p>這裡面大概只有 markdown 語法要來好好熟悉一下了。 文章的後半部都拿來當一些 <span class="caps">MD</span>&nbsp;語法的筆記吧XD</p>
-<pre><code>&lt;span class=&quot;more&quot;&gt;&lt;/span&gt;</code></pre>
+          <section class="content"><p>中秋連假稍微有點閒就來把一些未完成的項目解決，其中一個就是「<a href="https://github.com/" title="Geek的社群網站">Github</a> blog」，
+找了一些 <code>framework</code> 用來產生靜態站似乎又太肥，最後看到這套 <a href="http://wintersmith.io/"><strong>wintersmith</strong></a>，
+純粹用 <a href="http://nodejs.org/">Node.<span class="caps">JS</span></a> 來產生網站，配合線上看結果再輸出，還不錯!<br><span class="more"></span></p>
+<p>現在需要想一下怎麼讓這整套可以跟著我的 <a href="https://www.dropbox.com/">dropbox</a>&nbsp;走！  </p>
+<p>這裡面大概只有 <a href="http://zh.wikipedia.org/zh-tw/Markdown" title="Wiki: Markdown 是一種輕量級標記語言，創始人為約翰·格魯伯（John Gruber）和亞倫·斯沃茨（Aaron Swartz）。它允許人們「使用易讀易寫的純文本格式編寫文檔，然後轉換成有效的XHTML(或者HTML)文檔」。這種語言吸收了很多在電子郵件中已有的純文本標記的特性。">Markdown</a> 語法要來好好熟悉一下了。 文章的後半部都拿來當一些 <span class="caps">MD</span>&nbsp;語法的筆記吧XD</p>
+<p>用 <a href="http://notepad-plus-plus.org/" title="免費輕量級又強大的文字編輯器！">Notepad++</a> 編輯的畫面
+<img src="/articles/Hello_World/notepad.png" alt="寫文章就像打筆記，沒有一堆tag" title="寫文章就像打筆記，沒有一堆tag"></p>
+<h2>Markdown&nbsp;動手學</h2>
+<pre><code>&lt;span class=&quot;more&quot;&gt;&lt;/span&gt; //筆記這 Blog 文章 &quot;繼續閱讀&quot; 的 tag</code></pre>
+<pre><code>[Markdown][5] //論文式的連結引用法，這寫法很乾淨!
+
+[5]: http://zh.wikipedia.org/zh-tw/Markdown &quot;Wiki:....&quot;</code></pre>
+<pre><code>![這裡是圖沒跑出來會顯示的文字][7] //就是連結與法前加個驚嘆號
+
+[7]: ./notepad.png &quot;這裡是圖顯示出來後的註解文字&quot;</code></pre>
 </section>
         </article>
       </div>

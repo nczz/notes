@@ -14,12 +14,21 @@
       <pubDate>Fri, 20 Sep 2013 23:16:00 +0800</pubDate>
       <guid isPermaLink="true">http://log.mxp.tw/articles/Hello_World/</guid>
       <author></author>
-      <description>&lt;p&gt;中秋連假稍微有點閒就來把一些未完成的項目解決，其中一個就是「Github blog」，
-找了一些 framework 用來產生靜態站似乎又太肥，最後看到這套 &lt;strong&gt;wintersmith&lt;/strong&gt;，
-純粹用 nodejs 來產生網站，配合線上看結果再輸出，還不錯!&lt;br&gt;&lt;span class=&quot;more&quot;&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;現在需要想一下怎麼讓這整套可以跟著我的 dropbox 走！  &lt;/p&gt;
-&lt;p&gt;這裡面大概只有 markdown 語法要來好好熟悉一下了。 文章的後半部都拿來當一些 MD 語法的筆記吧XD&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;lt;span class=&amp;quot;more&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+      <description>&lt;p&gt;中秋連假稍微有點閒就來把一些未完成的項目解決，其中一個就是「&lt;a href=&quot;https://github.com/&quot; title=&quot;Geek的社群網站&quot;&gt;Github&lt;/a&gt; blog」，
+找了一些 &lt;code&gt;framework&lt;/code&gt; 用來產生靜態站似乎又太肥，最後看到這套 &lt;a href=&quot;http://wintersmith.io/&quot;&gt;&lt;strong&gt;wintersmith&lt;/strong&gt;&lt;/a&gt;，
+純粹用 &lt;a href=&quot;http://nodejs.org/&quot;&gt;Node.JS&lt;/a&gt; 來產生網站，配合線上看結果再輸出，還不錯!&lt;br&gt;&lt;span class=&quot;more&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;現在需要想一下怎麼讓這整套可以跟著我的 &lt;a href=&quot;https://www.dropbox.com/&quot;&gt;dropbox&lt;/a&gt; 走！  &lt;/p&gt;
+&lt;p&gt;這裡面大概只有 &lt;a href=&quot;http://zh.wikipedia.org/zh-tw/Markdown&quot; title=&quot;Wiki: Markdown 是一種輕量級標記語言，創始人為約翰·格魯伯（John Gruber）和亞倫·斯沃茨（Aaron Swartz）。它允許人們「使用易讀易寫的純文本格式編寫文檔，然後轉換成有效的XHTML(或者HTML)文檔」。這種語言吸收了很多在電子郵件中已有的純文本標記的特性。&quot;&gt;Markdown&lt;/a&gt; 語法要來好好熟悉一下了。 文章的後半部都拿來當一些 MD 語法的筆記吧XD&lt;/p&gt;
+&lt;p&gt;用 &lt;a href=&quot;http://notepad-plus-plus.org/&quot; title=&quot;免費輕量級又強大的文字編輯器！&quot;&gt;Notepad++&lt;/a&gt; 編輯的畫面
+&lt;img src=&quot;http://log.mxp.tw/articles/Hello_World/notepad.png&quot; alt=&quot;寫文章就像打筆記，沒有一堆tag&quot; title=&quot;寫文章就像打筆記，沒有一堆tag&quot;&gt;&lt;/p&gt;
+&lt;h2&gt;Markdown 動手學&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;span class=&amp;quot;more&amp;quot;&amp;gt;&amp;lt;/span&amp;gt; //筆記這 Blog 文章 &amp;quot;繼續閱讀&amp;quot; 的 tag&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;[Markdown][5] //論文式的連結引用法，這寫法很乾淨!
+
+[5]: http://zh.wikipedia.org/zh-tw/Markdown &amp;quot;Wiki:....&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;![這裡是圖沒跑出來會顯示的文字][7] //就是連結與法前加個驚嘆號
+
+[7]: ./notepad.png &amp;quot;這裡是圖顯示出來後的註解文字&amp;quot;&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
   </channel>

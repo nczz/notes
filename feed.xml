@@ -48,6 +48,74 @@
 </description>
     </item>
     <item>
+      <title>高等演算法-第三週作業</title>
+      <link>http://log.mxp.tw/articles/Advanced_Algorithm_Home_Work/</link>
+      <pubDate>Sun, 22 Sep 2013 17:29:00 +0800</pubDate>
+      <guid isPermaLink="true">http://log.mxp.tw/articles/Advanced_Algorithm_Home_Work/</guid>
+      <author></author>
+      <description>&lt;h4&gt;前言&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;從演算法到高等演算法，再次學習的感受又不一樣了！ 
+&lt;del&gt;難怪有好課值得一修再修的道理XD&lt;/del&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;span class=&quot;more&quot;&gt;&lt;sapn&gt;&lt;/p&gt;
+&lt;h4&gt;主題&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;作業一： 找一個「&lt;a href=&quot;http://zh.wikipedia.org/wiki/%E5%8E%9F%E5%9C%B0%E7%AE%97%E6%B3%95&quot; title=&quot;Wiki: 原地演算法（in-place algorithm）是一種使用小的，固定數量的額外之空間來轉換資料的演算法。當演算法執行時，輸入的資料通常會被要輸出的部份覆蓋掉。不是原地演算法有時候稱為非原地（not-in-place）或不得其所（out-of-place）。&quot;&gt;In place&lt;/a&gt;」的演算法問題？&lt;/p&gt;
+&lt;p&gt; 答： 數值比 大 / 小，程式碼如下 (JavaScript)&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-javascript&quot;&gt; &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; arr = [&lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;8&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;6&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;9&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;7&lt;/span&gt;];
+ &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; min = arr[&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;];
+ &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; (&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; i=&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;; i&amp;lt;arr.length; ++i) {
+     &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (arr[i] &amp;lt; min) {
+         min = arr[i];
+     }
+ }
+ console.log(&lt;span class=&quot;string&quot;&gt;&quot;The minimum in arr is: &quot;&lt;/span&gt;+min);&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;作業二： 證明「&lt;a href=&quot;http://zh.wikipedia.org/wiki/%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F&quot; title=&quot;Wiki: 選擇排序(Selection sort)是一種簡單直觀的排序演算法。它的工作原理如下。首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置，然後，再從剩餘未排序元素中繼續尋找最小（大）元素，然後放到已排序序列的末尾。以此類推，直到所有元素均排序完畢。&quot;&gt;選擇&lt;/a&gt;、&lt;a href=&quot;http://zh.wikipedia.org/wiki/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F&quot; title=&quot;Wiki: 冒泡排序（Bubble Sort，台灣譯為：泡沫排序或氣泡排序）是一種簡單的排序演算法。它重複地走訪過要排序的數列，一次比較兩個元素，如果他們的順序錯誤就把他們交換過來。走訪數列的工作是重複地進行直到沒有再需要交換，也就是說該數列已經排序完成。這個演算法的名字由來是因為越小的元素會經由交換慢慢「浮」到數列的頂端。&quot;&gt;泡沫&lt;/a&gt;、&lt;a href=&quot;http://zh.wikipedia.org/wiki/%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F&quot; title=&quot;Wiki: 插入排序（Insertion Sort）的演算法描述是一種簡單直觀的排序演算法。它的工作原理是通過構建有序序列，對於未排序數據，在已排序序列中從後向前掃描，找到相應位置並插入。插入排序在實現上，通常採用in-place排序（即只需用到O(1)的額外空間的排序），因而在從後向前掃描過程中，需要反覆把已排序元素逐步向後挪位，為最新元素提供插入空間。&quot;&gt;插入&lt;/a&gt;排序法是否屬於 &lt;a href=&quot;http://www.csie.ntnu.edu.tw/~u91029/SequenceManipulation.html&quot; title=&quot;演算法筆記&amp;gt; 延伸閱讀： stable 兩筆相同資料，原本排在前頭的，排序後仍在前頭；原本排在後頭的，排序後仍在後頭。這稱做 stable 的排序演算法，相同資料、順序不變。&quot;&gt;Stable / Non-Stable&lt;/a&gt;」？&lt;/p&gt;
+&lt;p&gt; &lt;a href=&quot;http://zh.wikipedia.org/wiki/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95#.E7.A8.B3.E5.AE.9A.E6.80.A7&quot; title=&quot;Wiki: 排序算法:穩定度&quot;&gt;答&lt;/a&gt;：維基說原始的選擇排序法為 &lt;code&gt;Non-Stable&lt;/code&gt; 的排序法！但結果其實取決於程式的寫法，在判別大小時如果多一個 &lt;code&gt;=&lt;/code&gt; 號就會是不穩定的排序了。&lt;/p&gt;
+&lt;p&gt; 選擇排序法： 在陣列中找到最小的後放在最左邊設定其為排好的數列，再從下一個開始到結尾找最小的排，直到結束。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-javascript&quot;&gt; &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; arr = genRandNumArr(&lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;); &lt;span class=&quot;comment&quot;&gt;//產生陣列&lt;/span&gt;
+ &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; work_index = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;//設定起始位址&lt;/span&gt;
+ &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; min = {index:work_index,value:arr[work_index].value}; &lt;span class=&quot;comment&quot;&gt;//設定最小值，即為起始位址&lt;/span&gt;
+ &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; (&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; j=&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; j&amp;lt;arr.length; ++j) {
+     &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; (&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; i=work_index; i&amp;lt;arr.length; ++i) {
+         &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (arr[i].value &amp;lt; min.value) { &lt;span class=&quot;comment&quot;&gt;//non-stable switch&lt;/span&gt;
+             min.value = arr[i].value; &lt;span class=&quot;comment&quot;&gt;//紀錄最小值&lt;/span&gt;
+             min.index = i; &lt;span class=&quot;comment&quot;&gt;//紀錄最小值位址&lt;/span&gt;
+         }
+     }
+     arr.swap(work_index,min.index); &lt;span class=&quot;comment&quot;&gt;//將最小的元素換到最左後從下一個繼續比&lt;/span&gt;
+     work_index = j;
+     min.index = work_index;
+     min.value = arr[work_index].value;
+ }&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt; 泡沫排序法： 在陣列中兩兩比較，找最大的數一路交換到最右邊，重複比較步驟直到換到最左。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-javascript&quot;&gt; &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; (&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; r=arr.length-&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;; r&amp;gt;=&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; --r) {
+     &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; (&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; i=&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; i&amp;lt;r; ++i) {
+         &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (arr[i].value &amp;gt; arr[i+&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;].value) { &lt;span class=&quot;comment&quot;&gt;//non-stable switch&lt;/span&gt;
+             arr.swap(i,i+&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;);
+         }
+     }
+ }&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt; 插入排序法： 設定從第二個元素開始到結束，比較迴圈過程中指定的元素前面所有元素大小，交換比指定元素大的元素，直到迴圈結束。&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-javascript&quot;&gt; &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; (j=&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;;j&amp;lt;arr.length ;j++ ) {
+     &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; (&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; t=j-&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;; t&amp;gt;=&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; --t) {
+         &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (arr[t].value &amp;gt; arr[t+&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;].value) { &lt;span class=&quot;comment&quot;&gt;//non-stable switch&lt;/span&gt;
+             arr.swap(t,t+&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;);
+         }
+     }
+ }&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt; 文章只有部分程式，其他的在這: &lt;a href=&quot;http://log.mxp.tw/articles/Advanced_Algorithm_Home_Work/Week03.js&quot; title=&quot;右鍵另存檔案！&quot;&gt;Week03.js&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4&gt;結語&lt;/h4&gt;
+&lt;p&gt;因為想知道是否為 &lt;code&gt;Stable&lt;/code&gt; 所以多包了一層來比較有序號的物件才能夠清楚結果！ 
+但也產生了一個有趣的現象：「是不是 Stable ，寫程式的人都能掌握」。&lt;/p&gt;
+&lt;p&gt;有任何錯誤歡迎利用下方留言告知，以免犯了科學大忌誤人子弟！&lt;/p&gt;
+</description>
+    </item>
+    <item>
       <title>使用 Wintersmith 建置 Github Blog</title>
       <link>http://log.mxp.tw/articles/Build_Github_Blog/</link>
       <pubDate>Sat, 21 Sep 2013 15:21:00 +0800</pubDate>
@@ -183,7 +251,7 @@ node node_modules/wintersmith/bin/wintersmith build&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;[Markdown][5] //論文式的連結引用法，這寫法很乾淨!
 
 [5]: http://zh.wikipedia.org/zh-tw/Markdown &amp;quot;Wiki:....&amp;quot;&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;![這裡是圖沒跑出來會顯示的文字][7] //就是連結與法前加個驚嘆號
+&lt;pre&gt;&lt;code&gt;![這裡是圖沒跑出來會顯示的文字][7] //就是連結語法前加個驚嘆號
 
 [7]: ./notepad.png &amp;quot;這裡是圖顯示出來後的註解文字&amp;quot;&lt;/code&gt;&lt;/pre&gt;
 </description>

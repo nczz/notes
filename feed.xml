@@ -5,52 +5,13 @@
     <atom:link href="http://log.mxp.tw/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://log.mxp.tw</link>
     <description>知識得之於人，所以也將自己的筆記放上網希望能有點貢獻，這也是種 OpenSource 吧！ ：）</description>
-    <pubDate>Sun, 22 Sep 2013 17:29:00 +0800</pubDate>
+    <pubDate>Mon, 23 Sep 2013 17:29:00 +0800</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
     <item>
-      <title>專案-台鐵訂票小幫手</title>
-      <link>http://log.mxp.tw/articles/TRA_Ticket_Helper/</link>
-      <pubDate>Sun, 22 Sep 2013 17:29:00 +0800</pubDate>
-      <guid isPermaLink="true">http://log.mxp.tw/articles/TRA_Ticket_Helper/</guid>
-      <author></author>
-      <description>&lt;h4&gt;前言&lt;/h4&gt;
-&lt;blockquote&gt;
-&lt;p&gt;主題是團隊合作的開始，期望值的環境是：「幾人小組」、「協同開發」、「版本控制」、「分工合作」，
-台鐵這個主題是研究室同學想的，只因為他常常半夜再幫他或是他女友搶火車票，很賭爛XD&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;span class=&quot;more&quot;&gt;&lt;sapn&gt;&lt;/p&gt;
-&lt;h4&gt;主題&lt;/h4&gt;
-&lt;p&gt;前些日子還沒這麼忙的時候，有個想法是「找人合夥做點事」，想當然爾，看到他這麼熱血的想解決這個問題我也跟著起來規劃。&lt;/p&gt;
-&lt;p&gt;心想可以藉此機會把大夥給 team 起來，於是著手研究「問題」，如下所列&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;因為訂票流程不夠直覺，所以卡！ 需要設計快速訂票的流程&lt;/li&gt;
-&lt;li&gt;自動訂票，但卡在&lt;a href=&quot;http://railway.hinet.net/Public/main_1_16.html&quot; title=&quot;台鐵網站針對自動訂票的說明&quot;&gt;法規&lt;/a&gt;與驗證(&lt;a href=&quot;http://zh.wikipedia.org/wiki/%E9%AA%8C%E8%AF%81%E7%A0%81&quot; title=&quot;Wiki: 全自動區分電腦和人類的圖靈測試（英語：Completely Automated Public Turing test to tell Computers and Humans Apart，簡稱CAPTCHA），俗稱驗證碼，是一種區分使用者是電腦和人的公共全自動程式。&quot;&gt;CAPTCHA&lt;/a&gt;) &lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;補 最近新聞： &lt;a href=&quot;http://www.ettoday.net/news/20130913/269733.htm&quot; title=&quot;「地下局長」外掛秒殺台鐵票 2個月搶50萬張年獲百萬&quot;&gt;Link1&lt;/a&gt; 、 &lt;a href=&quot;http://www.appledaily.com.tw/appledaily/article/headline/20130919/35305060/&quot; title=&quot;火車票神 幫學弟妹搶票495張&quot;&gt;Link2&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;第一個問題，訂票流程改善方式就是寫程式去爬台鐵網站的&lt;a href=&quot;http://163.29.3.98/xml/&quot; title=&quot;鐵路時刻表(XML格式)&quot;&gt;資料&lt;/a&gt;再將整個訂票頁面設計過就好！
-不過第二個問題就要影像處理(&lt;a href=&quot;http://zh.wikipedia.org/wiki/%E5%85%89%E5%AD%A6%E5%AD%97%E7%AC%A6%E8%AF%86%E5%88%AB&quot; title=&quot;Wiki: Optical Character Recognition, 是指對文字資料的影像檔案進行分析處理，獲取文字及版面訊息的過程。&quot;&gt;OCR&lt;/a&gt;)的技術來解決，但因為有些敏感，就不細談。還好實驗室的
-同學包括我自己都是影像處理的領域，這部份還玩的下去XD&lt;/p&gt;
-&lt;p&gt;專案開在 &lt;a href=&quot;https://github.com/nczz/TRATicketHelper&quot; title=&quot;台鐵訂票小幫手&quot;&gt;Github&lt;/a&gt; 上，是第一版(硬幹)的重構改寫，因開學後事情不少，慢慢改… OCR目前測辨識成功率有9成，但那部份就不會放出來了。&lt;/p&gt;
-&lt;p&gt;使用的工具是 NodeJS + &lt;a href=&quot;http://express-io.org/&quot; title=&quot;ExpressJS + Socket.IO&quot;&gt;ExpressJS.IO&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;這邊有幾點筆記：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;要爬台鐵網站進行訂票一定要取得 session cookie，直接爬訂票頁面會發生錯誤&lt;/li&gt;
-&lt;li&gt;爬時刻表網站需要 zLib 解壓縮&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h4&gt;結語&lt;/h4&gt;
-&lt;p&gt;其實做甚麼軟體，對會寫程式的人只需要一個東西叫做「時間」，想法再多也需要實現才能證明，
-技術精進與否已經不是我的考量了，同一種技術抓到要領後就沒有必要過份的追尋，為了技術而技術不會幫助你成長，
-學習到某種程度後會發現，要切入技術不用花太多時間，花最多的時間在找尋一個叫做「適合」，
-那需要經驗的，所以只有讓自己多接觸挑戰多面對各種難題才會進步。&lt;/p&gt;
-&lt;p&gt;做研究時，老闆特別叮嚀不要搞系統，是條不歸路。我想在那時候，關於「資訊工程」就有個新的開始了！&lt;/p&gt;
-&lt;p&gt;OS: 有些實驗性的程式，結果達到後要我重構再放出真的好懶阿 囧n 慢慢的培養這個良好習慣吧。&lt;/p&gt;
-</description>
-    </item>
-    <item>
       <title>高等演算法-第三週作業</title>
       <link>http://log.mxp.tw/articles/Advanced_Algorithm_Home_Work/</link>
-      <pubDate>Sun, 22 Sep 2013 17:29:00 +0800</pubDate>
+      <pubDate>Mon, 23 Sep 2013 17:29:00 +0800</pubDate>
       <guid isPermaLink="true">http://log.mxp.tw/articles/Advanced_Algorithm_Home_Work/</guid>
       <author></author>
       <description>&lt;h4&gt;前言&lt;/h4&gt;
@@ -113,6 +74,45 @@
 &lt;p&gt;因為想知道是否為 &lt;code&gt;Stable&lt;/code&gt; 所以多包了一層來比較有序號的物件才能夠清楚結果！ 
 但也產生了一個有趣的現象：「是不是 Stable ，寫程式的人都能掌握」。&lt;/p&gt;
 &lt;p&gt;有任何錯誤歡迎利用下方留言告知，以免犯了科學大忌誤人子弟！&lt;/p&gt;
+</description>
+    </item>
+    <item>
+      <title>專案-台鐵訂票小幫手</title>
+      <link>http://log.mxp.tw/articles/TRA_Ticket_Helper/</link>
+      <pubDate>Sun, 22 Sep 2013 17:29:00 +0800</pubDate>
+      <guid isPermaLink="true">http://log.mxp.tw/articles/TRA_Ticket_Helper/</guid>
+      <author></author>
+      <description>&lt;h4&gt;前言&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;主題是團隊合作的開始，期望值的環境是：「幾人小組」、「協同開發」、「版本控制」、「分工合作」，
+台鐵這個主題是研究室同學想的，只因為他常常半夜再幫他或是他女友搶火車票，很賭爛XD&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;span class=&quot;more&quot;&gt;&lt;sapn&gt;&lt;/p&gt;
+&lt;h4&gt;主題&lt;/h4&gt;
+&lt;p&gt;前些日子還沒這麼忙的時候，有個想法是「找人合夥做點事」，想當然爾，看到他這麼熱血的想解決這個問題我也跟著起來規劃。&lt;/p&gt;
+&lt;p&gt;心想可以藉此機會把大夥給 team 起來，於是著手研究「問題」，如下所列&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;因為訂票流程不夠直覺，所以卡！ 需要設計快速訂票的流程&lt;/li&gt;
+&lt;li&gt;自動訂票，但卡在&lt;a href=&quot;http://railway.hinet.net/Public/main_1_16.html&quot; title=&quot;台鐵網站針對自動訂票的說明&quot;&gt;法規&lt;/a&gt;與驗證(&lt;a href=&quot;http://zh.wikipedia.org/wiki/%E9%AA%8C%E8%AF%81%E7%A0%81&quot; title=&quot;Wiki: 全自動區分電腦和人類的圖靈測試（英語：Completely Automated Public Turing test to tell Computers and Humans Apart，簡稱CAPTCHA），俗稱驗證碼，是一種區分使用者是電腦和人的公共全自動程式。&quot;&gt;CAPTCHA&lt;/a&gt;) &lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;補 最近新聞： &lt;a href=&quot;http://www.ettoday.net/news/20130913/269733.htm&quot; title=&quot;「地下局長」外掛秒殺台鐵票 2個月搶50萬張年獲百萬&quot;&gt;Link1&lt;/a&gt; 、 &lt;a href=&quot;http://www.appledaily.com.tw/appledaily/article/headline/20130919/35305060/&quot; title=&quot;火車票神 幫學弟妹搶票495張&quot;&gt;Link2&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;第一個問題，訂票流程改善方式就是寫程式去爬台鐵網站的&lt;a href=&quot;http://163.29.3.98/xml/&quot; title=&quot;鐵路時刻表(XML格式)&quot;&gt;資料&lt;/a&gt;再將整個訂票頁面設計過就好！
+不過第二個問題就要影像處理(&lt;a href=&quot;http://zh.wikipedia.org/wiki/%E5%85%89%E5%AD%A6%E5%AD%97%E7%AC%A6%E8%AF%86%E5%88%AB&quot; title=&quot;Wiki: Optical Character Recognition, 是指對文字資料的影像檔案進行分析處理，獲取文字及版面訊息的過程。&quot;&gt;OCR&lt;/a&gt;)的技術來解決，但因為有些敏感，就不細談。還好實驗室的
+同學包括我自己都是影像處理的領域，這部份還玩的下去XD&lt;/p&gt;
+&lt;p&gt;專案開在 &lt;a href=&quot;https://github.com/nczz/TRATicketHelper&quot; title=&quot;台鐵訂票小幫手&quot;&gt;Github&lt;/a&gt; 上，是第一版(硬幹)的重構改寫，因開學後事情不少，慢慢改… OCR目前測辨識成功率有9成，但那部份就不會放出來了。&lt;/p&gt;
+&lt;p&gt;使用的工具是 NodeJS + &lt;a href=&quot;http://express-io.org/&quot; title=&quot;ExpressJS + Socket.IO&quot;&gt;ExpressJS.IO&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;這邊有幾點筆記：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;要爬台鐵網站進行訂票一定要取得 session cookie，直接爬訂票頁面會發生錯誤&lt;/li&gt;
+&lt;li&gt;爬時刻表網站需要 zLib 解壓縮&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4&gt;結語&lt;/h4&gt;
+&lt;p&gt;其實做甚麼軟體，對會寫程式的人只需要一個東西叫做「時間」，想法再多也需要實現才能證明，
+技術精進與否已經不是我的考量了，同一種技術抓到要領後就沒有必要過份的追尋，為了技術而技術不會幫助你成長，
+學習到某種程度後會發現，要切入技術不用花太多時間，花最多的時間在找尋一個叫做「適合」，
+那需要經驗的，所以只有讓自己多接觸挑戰多面對各種難題才會進步。&lt;/p&gt;
+&lt;p&gt;做研究時，老闆特別叮嚀不要搞系統，是條不歸路。我想在那時候，關於「資訊工程」就有個新的開始了！&lt;/p&gt;
+&lt;p&gt;OS: 有些實驗性的程式，結果達到後要我重構再放出真的好懶阿 囧n 慢慢的培養這個良好習慣吧。&lt;/p&gt;
 </description>
     </item>
     <item>

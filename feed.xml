@@ -5,9 +5,55 @@
     <atom:link href="http://log.mxp.tw/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://log.mxp.tw</link>
     <description>知識得之於人，所以也將自己的筆記放上網希望能有點貢獻，這也是種 OpenSource 吧！ ：）</description>
-    <pubDate>Mon, 23 Sep 2013 17:29:00 +0800</pubDate>
+    <pubDate>Tue, 24 Sep 2013 17:29:00 +0800</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
+    <item>
+      <title>HTML 樣板引擎 - Jade</title>
+      <link>http://log.mxp.tw/articles/Learning_Jade_Template_Engine/</link>
+      <pubDate>Tue, 24 Sep 2013 17:29:00 +0800</pubDate>
+      <guid isPermaLink="true">http://log.mxp.tw/articles/Learning_Jade_Template_Engine/</guid>
+      <author></author>
+      <description>&lt;h4&gt;前言&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;第一次接觸這語言是在實做 NodeJS + ExpressJS 碰到的，App 中預設的樣版引擎模組，
+當時沒覺得甚麼，一直到開始想改這 Blog 的模板時就再次相遇。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;span class=&quot;more&quot;&gt;&lt;sapn&gt;&lt;/p&gt;
+&lt;h4&gt;主題&lt;/h4&gt;
+&lt;p&gt;官網： &lt;a href=&quot;http://jade-lang.com/&quot;&gt;Jade - Node Template Engine&lt;/a&gt; 、 &lt;a href=&quot;https://github.com/visionmedia/jade/&quot;&gt;Github&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;對常寫 &lt;code&gt;HTML&lt;/code&gt; 的人應該很好上手，語言的表達很清楚，唯一要注意的大概就是排版吧!&lt;/p&gt;
+&lt;p&gt;用 &lt;code&gt;Tab&lt;/code&gt; 排或用 &lt;code&gt;Space&lt;/code&gt; 空格排都可以，但要維持一致性，不然就會發生解析錯誤、編譯失敗。&lt;/p&gt;
+&lt;p&gt;舉簡單例子：&lt;/p&gt;
+&lt;p&gt;一般寫 HTML 標籤都是帶著角括弧成對出現，在 Jade 中只有一半的標籤而且無需角括弧，然後利用縮排的觀念去解釋&lt;/p&gt;
+&lt;p&gt;EX&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-html&quot;&gt;&amp;lt;html&amp;gt;
+    &amp;lt;head&amp;gt;
+        &amp;lt;title&amp;gt;Hi, This is Mxp.&amp;lt;/title&amp;gt;
+    &amp;lt;/head&amp;gt;
+    &amp;lt;body&amp;gt;
+        &amp;lt;p&amp;gt;Hello World!&amp;lt;/p&amp;gt;
+    &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;轉成 &lt;code&gt;Jade&lt;/code&gt; 後變成&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;lang-jade&quot;&gt;html
+  head
+    title
+      Hi, This is Mxp.
+    body
+      p
+        Hello World!&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;看起來好像沒這麼漂亮，但是實用性大增，程式化之下可以做的事就更簡單！&lt;/p&gt;
+&lt;p&gt;像這個 Blog 每一頁面都是靜態的 html 檔，由 Jade 樣板產生的話只需要幾個檔案搭配一些繼承關系就解決，&lt;/p&gt;
+&lt;p&gt;有規劃的話，對於開發效率應該提升不少。&lt;/p&gt;
+&lt;p&gt;以下列出幾個網路上學習的資源，看過玩過就有收穫了！&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.learnjade.com/tour/intro/&quot; title=&quot;建議初學者從這開始，一步一步學，邊學邊改&quot;&gt;Learnjade.com&lt;/a&gt; — 建議初學者從這開始，一步一步學，邊學邊改&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.learnjade.com/playground/&quot; title=&quot;與上一個網站相同，但要特別推薦這個是因為可以在這邊模擬繼承關係&quot;&gt;Playground&lt;/a&gt; — 與上一個網站相同，但要特別推薦這個是因為可以在這邊模擬繼承關係&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://naltatis.github.io/jade-syntax-docs/#basics&quot; title=&quot;與第一個性質學習差不多，但有多提到了函式的操作與一些基礎概念&quot;&gt;Jade-syntax-docs&lt;/a&gt; — 與第一個性質學習差不多，但有多提到了函式的操作與一些基礎概念&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
     <item>
       <title>高等演算法-第三週作業</title>
       <link>http://log.mxp.tw/articles/Advanced_Algorithm_Home_Work/</link>

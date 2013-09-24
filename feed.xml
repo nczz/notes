@@ -228,8 +228,12 @@ node node_modules/wintersmith/bin/wintersmith build&lt;/code&gt;&lt;/pre&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href=&quot;https://help.github.com/articles/using-jekyll-with-pages&quot; title=&quot;官方推薦&quot;&gt;jekyll&lt;/a&gt; &lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://octopress.org/&quot; title=&quot;滿多人用這個&quot;&gt;Octopress&lt;/a&gt; &lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://zespia.tw/hexo/&quot; title=&quot;台灣人寫的喔！&quot;&gt;hexo&lt;/a&gt; &lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://blog.kejyun.com/2013/06/Build-Web-Page-On-Github.html&quot; title=&quot;網友細心整理的分享&quot;&gt;在 Github 建立靜態網站&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://zespia.tw/hexo/&quot; title=&quot;台灣人寫的喔！&quot;&gt;hexo&lt;/a&gt; &lt;/p&gt;
+&lt;p&gt; 更新：2013.09.24 這裡有份網友更新的清單&lt;/p&gt;
+ &lt;script src=&quot;https://gist.github.com/nodiscc/6138507.js&quot;&gt;&lt;/script&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://blog.kejyun.com/2013/06/Build-Web-Page-On-Github.html&quot; title=&quot;網友細心整理的分享&quot;&gt;在 Github 建立靜態網站&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ol&gt;
 </description>
     </item>

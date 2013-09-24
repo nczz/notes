@@ -8,8 +8,8 @@
     <meta http-equiv="expires" content="0">
     <meta name="google-site-verification" content="B2QlHLtpqHzj4jWSzkirKvlEC1zFYxCezo7h721y600">
     <meta name="robots" content="INDEX,FOLLOW">
-    <meta content="Nodejs, JavaScript, OpenCV, 影像處理, 研究, Github, Git, C++, Markdown, 學習, 筆記, OpenSource, BSP, Blog, Static html" name="keywords">
-    <meta content="隨手筆記 Written by 莫小屁" property="og:title">
+    <meta content="Nodejs, JavaScript, OpenCV, 影像處理, 研究, Github, Git, C++, Markdown, 學習, 筆記, OpenSource, BSP, Blog, Static html, 靜態網站" name="keywords">
+    <meta content="使用 Wintersmith 建置 Github Blog Written by 莫小屁 At 隨手筆記" property="og:title">
     <meta content="http://log.mxp.tw/logo.png" property="og:image">
     <meta content="http://log.mxp.tw/articles/Build_Github_Blog/" property="og:url">
     <title>使用 Wintersmith 建置 Github Blog - 隨手筆記
@@ -17,8 +17,12 @@
     <link rel="alternate" href="http://log.mxp.tw/feed.xml" type="application/rss+xml" title="知識得之於人，所以也將自己的筆記放上網希望能有點貢獻，這也是種 OpenSource 吧！ ：）">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic|Anonymous+Pro:400,700,400italic,700italic|Merriweather:400,700,300">
     <link rel="stylesheet" href="/css/main.css">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script type="text/javascript">
+    <link rel="stylesheet" href="/js/sidr/stylesheets/jquery.sidr.light.css">
+    <script src="/js/jquery-1.10.2.min.js"></script>
+    <script src="/js/underscore-min.js"></script>
+    <script src="/js/sidr/jquery.sidr.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script>
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-44220076-2']);
       _gaq.push(['_setDomainName', 'mxp.tw']);
@@ -31,10 +35,11 @@
     </script>
   </head>
   <body class="article-detail">
+    <div id="sidebar"></div>
     <header class="header">
       <div class="content-wrap">
         <h1>使用 Wintersmith 建置 Github Blog</h1>
-        <p class="author">Written by <span class="author"><a href="mailto:im@mxp.tw">莫小屁</a></span>
+        <p class="author">Written by <span class="author"><a href="mailto:im@mxp.tw" title="Have A Geek Heart">莫小屁</a></span>
         </p>
       </div>
     </header>
@@ -148,8 +153,12 @@ node node_modules/wintersmith/bin/wintersmith build</code></pre>
 <ol>
 <li><a href="https://help.github.com/articles/using-jekyll-with-pages" title="官方推薦">jekyll</a> </li>
 <li><a href="http://octopress.org/" title="滿多人用這個">Octopress</a> </li>
-<li><a href="http://zespia.tw/hexo/" title="台灣人寫的喔！">hexo</a> </li>
-<li><a href="http://blog.kejyun.com/2013/06/Build-Web-Page-On-Github.html" title="網友細心整理的分享">在 Github&nbsp;建立靜態網站</a></li>
+<li><p><a href="http://zespia.tw/hexo/" title="台灣人寫的喔！">hexo</a> </p>
+<p> 更新：2013.09.24&nbsp;這裡有份網友更新的清單</p>
+ <script src="https://gist.github.com/nodiscc/6138507.js"></script>
+</li>
+<li><p><a href="http://blog.kejyun.com/2013/06/Build-Web-Page-On-Github.html" title="網友細心整理的分享">在 Github&nbsp;建立靜態網站</a></p>
+</li>
 </ol>
 </section>
         </article>
@@ -177,6 +186,5 @@ node node_modules/wintersmith/bin/wintersmith build</code></pre>
         </section>
       </div>
     </footer>
-    <script>$(document).ready(function(){ $('a').click(function(){ $(this).attr("href",$(this).attr("href")+'?t='+Date.now());}); });</script>
   </body>
 </html>

@@ -80,7 +80,7 @@
  console.log(&lt;span class=&quot;string&quot;&gt;&quot;The minimum in arr is: &quot;&lt;/span&gt;+min);&lt;/code&gt;&lt;/pre&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;作業二： 證明「&lt;a href=&quot;http://zh.wikipedia.org/wiki/%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F&quot; title=&quot;Wiki: 選擇排序(Selection sort)是一種簡單直觀的排序演算法。它的工作原理如下。首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置，然後，再從剩餘未排序元素中繼續尋找最小（大）元素，然後放到已排序序列的末尾。以此類推，直到所有元素均排序完畢。&quot;&gt;選擇&lt;/a&gt;、&lt;a href=&quot;http://zh.wikipedia.org/wiki/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F&quot; title=&quot;Wiki: 冒泡排序（Bubble Sort，台灣譯為：泡沫排序或氣泡排序）是一種簡單的排序演算法。它重複地走訪過要排序的數列，一次比較兩個元素，如果他們的順序錯誤就把他們交換過來。走訪數列的工作是重複地進行直到沒有再需要交換，也就是說該數列已經排序完成。這個演算法的名字由來是因為越小的元素會經由交換慢慢「浮」到數列的頂端。&quot;&gt;泡沫&lt;/a&gt;、&lt;a href=&quot;http://zh.wikipedia.org/wiki/%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F&quot; title=&quot;Wiki: 插入排序（Insertion Sort）的演算法描述是一種簡單直觀的排序演算法。它的工作原理是通過構建有序序列，對於未排序數據，在已排序序列中從後向前掃描，找到相應位置並插入。插入排序在實現上，通常採用in-place排序（即只需用到O(1)的額外空間的排序），因而在從後向前掃描過程中，需要反覆把已排序元素逐步向後挪位，為最新元素提供插入空間。&quot;&gt;插入&lt;/a&gt;排序法是否屬於 &lt;a href=&quot;http://www.csie.ntnu.edu.tw/~u91029/SequenceManipulation.html&quot; title=&quot;演算法筆記&amp;gt; 延伸閱讀： stable 兩筆相同資料，原本排在前頭的，排序後仍在前頭；原本排在後頭的，排序後仍在後頭。這稱做 stable 的排序演算法，相同資料、順序不變。&quot;&gt;Stable / Non-Stable&lt;/a&gt;」？&lt;/p&gt;
-&lt;p&gt; &lt;a href=&quot;http://zh.wikipedia.org/wiki/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95#.E7.A8.B3.E5.AE.9A.E6.80.A7&quot; title=&quot;Wiki: 排序算法:穩定度&quot;&gt;答&lt;/a&gt;：維基說原始的選擇排序法為 &lt;code&gt;Non-Stable&lt;/code&gt; 的排序法！但結果其實取決於程式的寫法，在判別大小時如果多一個 &lt;code&gt;=&lt;/code&gt; 號就會是不穩定的排序了。&lt;/p&gt;
+&lt;p&gt; &lt;a href=&quot;http://zh.wikipedia.org/wiki/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95#.E7.A8.B3.E5.AE.9A.E6.80.A7&quot; title=&quot;Wiki: 排序算法:穩定度&quot;&gt;答&lt;/a&gt;：選擇排序法為 &lt;code&gt;Non-Stable&lt;/code&gt; 的排序法！&lt;/p&gt;
 &lt;p&gt; 選擇排序法： 在陣列中找到最小的後放在最左邊設定其為排好的數列，再從下一個開始到結尾找最小的排，直到結束。&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;lang-javascript&quot;&gt; &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; arr = genRandNumArr(&lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;); &lt;span class=&quot;comment&quot;&gt;//產生陣列&lt;/span&gt;
  &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; work_index = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;//設定起始位址&lt;/span&gt;
@@ -97,6 +97,8 @@
      min.index = work_index;
      min.value = arr[work_index].value;
  }&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt; 根據規則：選擇在陣列裡最小的元素向右排序，但是因為觀察的對象是尚未排序的其它元素而不是有前後關係的元素，所以排序後相同值的元素順位可能會因此而改變。
+ (舉例：*4,2,3,4,1)&lt;/p&gt;
 &lt;p&gt; 泡沫排序法： 在陣列中兩兩比較，找最大的數一路交換到最右邊，重複比較步驟直到換到最左。&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;lang-javascript&quot;&gt; &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; (&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; r=arr.length-&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;; r&amp;gt;=&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; --r) {
      &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; (&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; i=&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; i&amp;lt;r; ++i) {
@@ -105,7 +107,10 @@
          }
      }
  }&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt; 插入排序法： 設定從第二個元素開始到結束，比較迴圈過程中指定的元素前面所有元素大小，交換比指定元素大的元素，直到迴圈結束。&lt;/p&gt;
+&lt;p&gt; *插入排序法： 設定從第二個元素開始到結束，比較迴圈過程中指定的元素前面所有元素大小，交換比指定元素大的元素，直到迴圈結束。
+ 前面的方法規則是實作的方法，但是探究實際的插入排序法規則其實也是有可能為不穩定的排序法！
+ 實際的方法為：給定一數組符合規則由小到大，第二個新加入的元素會根據規則選擇插入第一個的左邊(小)或右邊(大)，
+ 接下來的新元素也依照規則新增，唯有碰到相同值的元素時可能會發生不穩定的現象(放左或放右)。&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&quot;lang-javascript&quot;&gt; &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; (j=&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;;j&amp;lt;arr.length ;j++ ) {
      &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; (&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; t=j-&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;; t&amp;gt;=&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; --t) {
          &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (arr[t].value &amp;gt; arr[t+&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;].value) { &lt;span class=&quot;comment&quot;&gt;//non-stable switch&lt;/span&gt;
@@ -113,12 +118,13 @@
          }
      }
  }&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt; 上述兩個方法，從規則觀察皆可以得知，兩兩相比再碰到相同元素值時並不會有交換的動作，所以為穩定的排序法！&lt;/p&gt;
 &lt;p&gt; 文章只有部分程式，其他的在這: &lt;a href=&quot;http://log.mxp.tw/articles/Advanced_Algorithm_Home_Work/Week03.js&quot; title=&quot;右鍵另存檔案！&quot;&gt;Week03.js&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;h4&gt;結語&lt;/h4&gt;
 &lt;p&gt;因為想知道是否為 &lt;code&gt;Stable&lt;/code&gt; 所以多包了一層來比較有序號的物件才能夠清楚結果！ 
-但也產生了一個有趣的現象：「是不是 Stable ，寫程式的人都能掌握」。&lt;/p&gt;
+但在觀察插入排序法時也產生了一個有趣的現象：「是不是 Stable ，寫程式的人都能掌握」。&lt;/p&gt;
 &lt;p&gt;有任何錯誤歡迎利用下方留言告知，以免犯了科學大忌誤人子弟！&lt;/p&gt;
 </description>
     </item>

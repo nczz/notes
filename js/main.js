@@ -46,8 +46,8 @@ function addURLTimeStamp(){
 }
 
 function main(){
-	addURLTimeStamp();
 	addSideBar();
+	addURLTimeStamp();
 }
 
 $(document).ready(main);

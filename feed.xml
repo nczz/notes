@@ -5,9 +5,121 @@
     <atom:link href="http://log.mxp.tw/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://log.mxp.tw</link>
     <description>知識得之於人，所以也將自己的筆記放上網希望能有點貢獻，這也是種 OpenSource 吧！ ：）</description>
-    <pubDate>Tue, 24 Sep 2013 17:29:00 +0800</pubDate>
+    <pubDate>Sat, 28 Sep 2013 17:29:00 +0800</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
+    <item>
+      <title>使用 Bitnami 服務安裝 Gitlab</title>
+      <link>http://log.mxp.tw/articles/Build_Gitlab_With_Bitnami/</link>
+      <pubDate>Sat, 28 Sep 2013 17:29:00 +0800</pubDate>
+      <guid isPermaLink="true">http://log.mxp.tw/articles/Build_Gitlab_With_Bitnami/</guid>
+      <author></author>
+      <description>&lt;h4&gt;前言&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;使用 &lt;a href=&quot;https://github.com/&quot; title=&quot;Geek的社群網路&quot;&gt;Github&lt;/a&gt; 的感覺很好，但是如果不付費開啟私人服務，所有的 &lt;code&gt;code&lt;/code&gt; 就會是公開的，這樣實在讓人很害羞、很不好意思！(誤)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;span class=&quot;more&quot;&gt;&lt;sapn&gt;&lt;/p&gt;
+&lt;h4&gt;主題&lt;/h4&gt;
+&lt;p&gt;因為考量 coding 也要團隊合作而且盡量走免費方案，所以就找到有一套跟 Github 很像 &lt;del&gt;根本差不多&lt;/del&gt; 但是是免費開源的 &lt;code&gt;WebApp&lt;/code&gt; : &lt;a href=&quot;http://gitlab.org/&quot; title=&quot;開源又強大的版本控制系統&quot;&gt;Gitlab&lt;/a&gt; &lt;/p&gt;
+&lt;p&gt;不過這套 App 安裝實在不是用一個麻煩就能形容的麻煩，但是總還是要可以快速佈署吧？&lt;/p&gt;
+&lt;p&gt;所以就是用 &lt;a href=&quot;http://bitnami.com/&quot; title=&quot;提供開源App打包的服務&quot;&gt;Bitnami&lt;/a&gt; 的&lt;a href=&quot;http://bitnami.com/stack/gitlab&quot;&gt;打包版&lt;/a&gt;最快了！ 註： 2013.09.28 Bitnami Gitlab version 6.1.0&lt;/p&gt;
+&lt;p&gt;Bitnami 提供 3 種版本的服務&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;套裝安裝包&lt;/li&gt;
+&lt;li&gt;虛擬系統檔&lt;/li&gt;
+&lt;li&gt;雲端主機&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;虛擬系統的部分採用 Ubuntu 這套比較多人討論的 Linux 版本。&lt;/p&gt;
+&lt;p&gt;AWS 雲端也有&lt;a href=&quot;http://bitnami.com/stack/gitlab/cloud/amazon&quot;&gt;支援&lt;/a&gt;，我用最小的方案去跑一個實體也很OK！&lt;/p&gt;
+&lt;p&gt;因為我的環境是實體機氣跑虛擬機器做服務，所以這次就只有紀錄虛擬機器碰到的設定。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;首先將VM檔案 (Ubuntu 12.04 64Bit) 抓回後掛上運行，第一次運作網路預設是 DHCP 取得IP，所以沒 NAT 環境的話會開…比較久一點XD&lt;/p&gt;
+&lt;p&gt; 開啟來後設定網路&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; # The primary network interface
+ auto eth0
+ iface eth0 inet static
+ address XXX.XXX.XXX.XXX
+ gateway XXX.XXX.XXX.XXX
+ netmask XXX.XXX.XXX.XXX
+ dns-nameservers 8.8.4.4 8.8.8.8 #Ubuntu 12.04 後這樣加入 nameserver 就好了!&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;綁定 Doamin name (假設位址是: git.mxp.tw)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; $ sudo /opt/bitnami/apps/gitorious/updateip --machine_hostname git.mxp.tw&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt; 改 hosts &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; $ sudo vim /etc/hosts
+ 127.0.0.1 git.mxp.tw&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt; 上面的設定會改到 gitlab.yml 這個檔案，可以到這裡檢查 host 的改變！&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; $ sudo vim /opt/bitnami/apps/gitorious/htdocs/config/gitlab.yml
+ host: git.mxp.tw&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt; 然後，因為一個小&lt;a href=&quot;http://stackoverflow.com/questions/16539993/bitnami-gitlab-stack-5-1-0-2-rewrites-gitlab-yml-after-reboot&quot; title=&quot;bitnami gitlab stack rewrites gitlab.yml after reboot&quot;&gt;BUG&lt;/a&gt;，重開機此設定會被重置，所以需再做以下步驟&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;將 /opt/bitnami/apps/gitlab 下的兩個 updateip &amp;amp; bnconfig 設定檔改名或移除 &lt;/li&gt;
+&lt;li&gt;修改 /etc/init.d/bnconfig-gitlab 這個檔案中&lt;pre&gt;&lt;code&gt; exec /opt/bitnami/apps/gitlab/bnconfig&lt;/code&gt;&lt;/pre&gt;
+ 註解為&lt;pre&gt;&lt;code&gt; #exec /opt/bitnami/apps/gitlab/bnconfig&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;設定可以 SSH 連線操作&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; $ sudo mv /etc/init/ssh.conf.back /etc/init/ssh.conf
+ $ sudo start ssh&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;設定一組 Email 做為服務通知(Gmail)&lt;/p&gt;
+&lt;p&gt; 修改 production.rb 這個檔案&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; $ sudo vim /opt/bitnami/apps/gitlab/htdocs/config/environments/production.rb&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt; 註解 delivery_method 這行&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; #config.action_mailer.delivery_method = :sendmail&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt; 加入下面這些設定在 &lt;code&gt;end&lt;/code&gt; 之上&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; config.action_mailer.raise_delivery_errors = true
+ config.action_mailer.delivery_method = :smtp
+ config.action_mailer.perform_deliveries = true
+ config.action_mailer.smtp_settings = {
+ :address =&amp;gt; &amp;quot;smtp.gmail.com&amp;quot;,
+ :port =&amp;gt; 587,
+ :domain =&amp;gt; &amp;quot;你的網站位置&amp;quot;,
+ :authentication =&amp;gt; :plain,
+ :user_name =&amp;gt; &amp;quot;你的GMAIL帳號&amp;quot;,
+ :password =&amp;gt; &amp;quot;你的GMAIL密碼&amp;quot;,
+ :enable_starttls_auto =&amp;gt; true
+ }&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt; &lt;em&gt;這項服務支援 Google App 的 Email&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt; 上面改好後再去 /opt/bitnami/apps/gitlab/htdocs/config/gitlab.yml 修改&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  email_from: noreply@mxp.tw #上述設定的EMAIL位址&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;基本設定好後就是開始 App 的設定囉！&lt;/p&gt;
+&lt;p&gt; Gitlab 預設登入帳號密碼&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; user mail: user@example.com
+ password: bitnami&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt; SSH 預設登入帳號密碼&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; Account: bitnami
+ Passoword: bitnami&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt; 其他更多設定可以參考官網&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;http://bitnami.com/faq/virtual_machines&quot;&gt;虛擬機器相關&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://wiki.bitnami.com/Applications/BitNami_GitLab&quot;&gt;Gitlab 服務相關&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;與安全性相關的帳號密碼務必自行換過&lt;/em&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;em&gt;錯誤與運行的 log 在 /opt/bitnami/apps/gitlab/htdocs/log/ 這個目錄下&lt;/em&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Gitlab 服務相關的設定&lt;/p&gt;
+&lt;p&gt; 設定檔在&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; /opt/bitnami/apps/gitlab/htdocs/config/gitlab.yml&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt; 可以設定服務的一些預設，像是使用者註冊、LDAP、OAuth(認證好像還有BUG)…&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;任何設定完成後都要記得&lt;/p&gt;
+&lt;p&gt; &lt;em&gt;重啟服務&lt;/em&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; $ sudo /opt/bitnami/ctlscript.sh restart&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4&gt;後記&lt;/h4&gt;
+&lt;p&gt;玩過才知道問題在哪，官網解說滿詳細的，但還是有些不夠(EX:文件中的路徑有些不對)，所以就把一些小地方記錄起來！&lt;/p&gt;
+&lt;p&gt;像是 Mail 怎麼都寄不出去，搞到後面其實是沒設定 nameserver (當初 ping IP 而已..)&lt;/p&gt;
+&lt;p&gt;這個服務一直在改版，我想應該會越來越好，很期待官方一鍵安裝的那天XD&lt;/p&gt;
+</description>
+    </item>
     <item>
       <title>HTML 樣板引擎 - Jade</title>
       <link>http://log.mxp.tw/articles/Learning_Jade_Template_Engine/</link>

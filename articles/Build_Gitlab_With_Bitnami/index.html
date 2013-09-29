@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh_TW">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta name="google-site-verification" content="B2QlHLtpqHzj4jWSzkirKvlEC1zFYxCezo7h721y600">
+    <meta name="robots" content="INDEX,FOLLOW">
+    <meta content="Nodejs, JavaScript, OpenCV, 影像處理, 研究, Github, Git, C++, Markdown, 學習, 筆記, OpenSource, Bitnami, Gitlab, Github, VirtualBox, VM, Gmail, Ubuntu 12.04, Cloud, AWS" name="keywords">
+    <meta content="使用 Bitnami 服務安裝 Gitlab Written by 莫小屁 At 隨手筆記" property="og:title">
+    <meta content="http://log.mxp.tw/logo.png" property="og:image">
+    <meta content="http://log.mxp.tw/articles/Build_Gitlab_With_Bitnami/" property="og:url">
+    <title>使用 Bitnami 服務安裝 Gitlab - 隨手筆記
+    </title>
+    <link rel="alternate" href="http://log.mxp.tw/feed.xml" type="application/rss+xml" title="知識得之於人，所以也將自己的筆記放上網希望能有點貢獻，這也是種 OpenSource 吧！ ：）">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic|Anonymous+Pro:400,700,400italic,700italic|Merriweather:400,700,300">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/js/sidr/stylesheets/jquery.sidr.light.css">
+    <script src="/js/jquery-1.10.2.min.js"></script>
+    <script src="/js/underscore-min.js"></script>
+    <script src="/js/sidr/jquery.sidr.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script>
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-44220076-2']);
+      _gaq.push(['_setDomainName', 'mxp.tw']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+  </head>
+  <body class="article-detail">
+    <div id="sidebar"></div>
+    <header class="header">
+      <div class="content-wrap">
+        <h1>使用 Bitnami 服務安裝 Gitlab</h1>
+        <p class="author">Written by <span class="author"><a href="mailto:im@mxp.tw" title="Have A Geek Heart">莫小屁</a></span>
+        </p>
+      </div>
+    </header>
+    <div id="content">
+      <div class="content-wrap">
+        <article class="article">
+          <section class="content"><h4>前言</h4>
+<blockquote>
+<p>使用 <a href="https://github.com/" title="Geek的社群網路">Github</a> 的感覺很好，但是如果不付費開啟私人服務，所有的 <code>code</code> 就會是公開的，這樣實在讓人很害羞、很不好意思！(誤)</p>
+</blockquote>
+<p><span class="more"><sapn></p>
+<h4>主題</h4>
+<p>因為考量 coding 也要團隊合作而且盡量走免費方案，所以就找到有一套跟 Github 很像 <del>根本差不多</del> 但是是免費開源的 <code>WebApp</code> : <a href="http://gitlab.org/" title="開源又強大的版本控制系統">Gitlab</a> </p>
+<p>不過這套 App&nbsp;安裝實在不是用一個麻煩就能形容的麻煩，但是總還是要可以快速佈署吧？</p>
+<p>所以就是用 <a href="http://bitnami.com/" title="提供開源App打包的服務">Bitnami</a> 的<a href="http://bitnami.com/stack/gitlab">打包版</a>最快了！ 註： 2013.09.28 Bitnami Gitlab version&nbsp;6.1.0</p>
+<p>Bitnami 提供 3&nbsp;種版本的服務</p>
+<ol>
+<li>套裝安裝包</li>
+<li>虛擬系統檔</li>
+<li>雲端主機</li>
+</ol>
+<p>虛擬系統的部分採用 Ubuntu 這套比較多人討論的 Linux&nbsp;版本。</p>
+<p><span class="caps">AWS</span> 雲端也有<a href="http://bitnami.com/stack/gitlab/cloud/amazon">支援</a>，我用最小的方案去跑一個實體也很<span class="caps">OK</span>！</p>
+<p>因為我的環境是實體機氣跑虛擬機器做服務，所以這次就只有紀錄虛擬機器碰到的設定。</p>
+<ol>
+<li><p>首先將<span class="caps">VM</span>檔案 (Ubuntu 12.04 64Bit) 抓回後掛上運行，第一次運作網路預設是 DHCP 取得IP，所以沒 NAT&nbsp;環境的話會開…比較久一點XD</p>
+<p> 開啟來後設定網路</p>
+<pre><code> # The primary network interface
+ auto eth0
+ iface eth0 inet static
+ address XXX.XXX.XXX.XXX
+ gateway XXX.XXX.XXX.XXX
+ netmask XXX.XXX.XXX.XXX
+ dns-nameservers 8.8.4.4 8.8.8.8 #Ubuntu 12.04 後這樣加入 nameserver 就好了!</code></pre>
+</li>
+<li><p>綁定 Doamin name (假設位址是:&nbsp;git.mxp.tw)</p>
+<pre><code> $ sudo /opt/bitnami/apps/gitorious/updateip --machine_hostname git.mxp.tw</code></pre>
+<p> 改&nbsp;hosts </p>
+<pre><code> $ sudo vim /etc/hosts
+ 127.0.0.1 git.mxp.tw</code></pre>
+<p> 上面的設定會改到 gitlab.yml 這個檔案，可以到這裡檢查 host&nbsp;的改變！</p>
+<pre><code> $ sudo vim /opt/bitnami/apps/gitorious/htdocs/config/gitlab.yml
+ host: git.mxp.tw</code></pre>
+<p> 然後，因為一個小<a href="http://stackoverflow.com/questions/16539993/bitnami-gitlab-stack-5-1-0-2-rewrites-gitlab-yml-after-reboot" title="bitnami gitlab stack rewrites gitlab.yml after reboot"><span class="caps">BUG</span></a>，重開機此設定會被重置，所以需再做以下步驟</p>
+<ol>
+<li>將 /opt/bitnami/apps/gitlab 下的兩個 updateip <span class="amp">&amp;</span> bnconfig&nbsp;設定檔改名或移除 </li>
+<li>修改 /etc/init.d/bnconfig-gitlab 這個檔案中<pre><code> exec /opt/bitnami/apps/gitlab/bnconfig</code></pre>
+ 註解為<pre><code> #exec /opt/bitnami/apps/gitlab/bnconfig</code></pre>
+</li>
+</ol>
+</li>
+<li><p>設定可以 <span class="caps">SSH</span>&nbsp;連線操作</p>
+<pre><code> $ sudo mv /etc/init/ssh.conf.back /etc/init/ssh.conf
+ $ sudo start ssh</code></pre>
+</li>
+<li><p>設定一組 Email&nbsp;做為服務通知(Gmail)</p>
+<p> 修改 production.rb&nbsp;這個檔案</p>
+<pre><code> $ sudo vim /opt/bitnami/apps/gitlab/htdocs/config/environments/production.rb</code></pre>
+<p> 註解 delivery_method&nbsp;這行</p>
+<pre><code> #config.action_mailer.delivery_method = :sendmail</code></pre>
+<p> 加入下面這些設定在 <code>end</code> 之上</p>
+<pre><code> config.action_mailer.raise_delivery_errors = true
+ config.action_mailer.delivery_method = :smtp
+ config.action_mailer.perform_deliveries = true
+ config.action_mailer.smtp_settings = {
+ :address =&gt; &quot;smtp.gmail.com&quot;,
+ :port =&gt; 587,
+ :domain =&gt; &quot;你的網站位置&quot;,
+ :authentication =&gt; :plain,
+ :user_name =&gt; &quot;你的GMAIL帳號&quot;,
+ :password =&gt; &quot;你的GMAIL密碼&quot;,
+ :enable_starttls_auto =&gt; true
+ }</code></pre>
+<p> <em>這項服務支援 Google App 的&nbsp;Email</em></p>
+<p> 上面改好後再去 /opt/bitnami/apps/gitlab/htdocs/config/gitlab.yml&nbsp;修改</p>
+<pre><code>  email_from: noreply@mxp.tw #上述設定的EMAIL位址</code></pre>
+</li>
+<li><p>基本設定好後就是開始 App&nbsp;的設定囉！</p>
+<p> Gitlab&nbsp;預設登入帳號密碼</p>
+<pre><code> user mail: user@example.com
+ password: bitnami</code></pre>
+<p> <span class="caps">SSH</span>&nbsp;預設登入帳號密碼</p>
+<pre><code> Account: bitnami
+ Passoword: bitnami</code></pre>
+<p> 其他更多設定可以參考官網</p>
+<ol>
+<li><a href="http://bitnami.com/faq/virtual_machines">虛擬機器相關</a></li>
+<li><a href="http://wiki.bitnami.com/Applications/BitNami_GitLab">Gitlab&nbsp;服務相關</a></li>
+</ol>
+</li>
+</ol>
+<ol>
+<li><p><em>與安全性相關的帳號密碼務必自行換過</em></p>
+</li>
+<li><p><em>錯誤與運行的 log 在 /opt/bitnami/apps/gitlab/htdocs/log/&nbsp;這個目錄下</em></p>
+</li>
+<li><p>Gitlab&nbsp;服務相關的設定</p>
+<p> 設定檔在</p>
+<pre><code> /opt/bitnami/apps/gitlab/htdocs/config/gitlab.yml</code></pre>
+<p> 可以設定服務的一些預設，像是使用者註冊、<span class="caps">LDAP</span>、OAuth(認證好像還有BUG)…</p>
+</li>
+<li><p>任何設定完成後都要記得</p>
+<p> <em>重啟服務</em></p>
+<pre><code> $ sudo /opt/bitnami/ctlscript.sh restart</code></pre>
+</li>
+</ol>
+<h4>後記</h4>
+<p>玩過才知道問題在哪，官網解說滿詳細的，但還是有些不夠(<span class="caps">EX</span>:文件中的路徑有些不對)，所以就把一些小地方記錄起來！</p>
+<p>像是 Mail 怎麼都寄不出去，搞到後面其實是沒設定 nameserver (當初 ping <span class="caps">IP</span>&nbsp;而已..)</p>
+<p>這個服務一直在改版，我想應該會越來越好，很期待官方一鍵安裝的那天<span class="caps">XD</span></p>
+</section>
+        </article>
+      </div>
+    </div>
+    <footer>
+      <div class="content-wrap">
+        <div class="nav"><a href="/">« 回首頁</a></div>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+          var disqus_shortname = 'log-mxp';
+          (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+        <noscript>
+          <Please>enable JavaScript to view the<a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></Please><a href="http://disqus.com" class="dsq-brlink">
+            <comments>powered by</comments><span class="logo-disqus">Disqus</span></a>
+        </noscript>
+        <section class="copy">
+          <p>&copy; 2013 莫小屁 &mdash; powered by&nbsp;<a href="https://github.com/jnordberg/wintersmith">Wintersmith</a>
+          </p>
+        </section>
+      </div>
+    </footer>
+  </body>
+</html>

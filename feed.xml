@@ -31,7 +31,7 @@
 &lt;/ol&gt;
 &lt;p&gt;虛擬系統的部分採用 Ubuntu 這套比較多人討論的 Linux 版本。&lt;/p&gt;
 &lt;p&gt;AWS 雲端也有&lt;a href=&quot;http://bitnami.com/stack/gitlab/cloud/amazon&quot;&gt;支援&lt;/a&gt;，我用最小的方案去跑一個實體也很OK！&lt;/p&gt;
-&lt;p&gt;因為我的環境是實體機氣跑虛擬機器做服務，所以這次就只有紀錄虛擬機器碰到的設定。&lt;/p&gt;
+&lt;p&gt;因為我的環境是實體機器跑虛擬機器做服務，所以這次就只有紀錄虛擬機器碰到的設定。&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;p&gt;首先將VM檔案 (Ubuntu 12.04 64Bit) 抓回後掛上運行，第一次運作網路預設是 DHCP 取得IP，所以沒 NAT 環境的話會開…比較久一點XD&lt;/p&gt;
 &lt;p&gt; 開啟來後設定網路&lt;/p&gt;

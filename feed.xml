@@ -98,8 +98,6 @@
 &lt;li&gt;&lt;a href=&quot;http://wiki.bitnami.com/Applications/BitNami_GitLab&quot;&gt;Gitlab 服務相關&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/li&gt;
-&lt;/ol&gt;
-&lt;ol&gt;
 &lt;li&gt;&lt;p&gt;&lt;em&gt;與安全性相關的帳號密碼務必自行換過&lt;/em&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;em&gt;錯誤與運行的 log 在 /opt/bitnami/apps/gitlab/htdocs/log/ 這個目錄下&lt;/em&gt;&lt;/p&gt;

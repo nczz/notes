@@ -44,12 +44,12 @@
  dns-nameservers 8.8.4.4 8.8.8.8 #Ubuntu 12.04 後這樣加入 nameserver 就好了!&lt;/code&gt;&lt;/pre&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;綁定 Doamin name (假設位址是: git.mxp.tw)&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt; $ sudo /opt/bitnami/apps/gitorious/updateip --machine_hostname git.mxp.tw&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt; $ sudo /opt/bitnami/apps/gitlab/updateip --machine_hostname git.mxp.tw&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt; 改 hosts &lt;/p&gt;
 &lt;pre&gt;&lt;code&gt; $ sudo vim /etc/hosts
  127.0.0.1 git.mxp.tw&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt; 上面的設定會改到 gitlab.yml 這個檔案，可以到這裡檢查 host 的改變！&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt; $ sudo vim /opt/bitnami/apps/gitorious/htdocs/config/gitlab.yml
+&lt;pre&gt;&lt;code&gt; $ sudo vim /opt/bitnami/apps/gitlab/htdocs/config/gitlab.yml
  host: git.mxp.tw&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt; 然後，因為一個小&lt;a href=&quot;http://stackoverflow.com/questions/16539993/bitnami-gitlab-stack-5-1-0-2-rewrites-gitlab-yml-after-reboot&quot; title=&quot;bitnami gitlab stack rewrites gitlab.yml after reboot&quot;&gt;BUG&lt;/a&gt;，重開機此設定會被重置，所以需再做以下步驟&lt;/p&gt;
 &lt;ol&gt;

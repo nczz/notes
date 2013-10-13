@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh_TW">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta name="google-site-verification" content="B2QlHLtpqHzj4jWSzkirKvlEC1zFYxCezo7h721y600">
+    <meta name="robots" content="INDEX,FOLLOW">
+    <meta content="Nodejs, JavaScript, OpenCV, 影像處理, 研究, Github, Git, C++, Markdown, 學習, 筆記, OpenSource, Wordpress, Website, Back-End, Hosting, Cloud, AWS, VPS, 虛擬主機, 網站後台" name="keywords">
+    <meta content="使用 Wordpress 建置網站後台 Written by 莫小屁 At 隨手筆記" property="og:title">
+    <meta content="http://log.mxp.tw/logo.png" property="og:image">
+    <meta content="http://log.mxp.tw/articles/User_Wordpress_Build_Back_End_Website/" property="og:url">
+    <title>使用 Wordpress 建置網站後台 - 隨手筆記
+    </title>
+    <link rel="alternate" href="http://log.mxp.tw/feed.xml" type="application/rss+xml" title="知識得之於人，所以也將自己的筆記放上網希望能有點貢獻，這也是種 OpenSource 吧！ ：）">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic|Anonymous+Pro:400,700,400italic,700italic|Merriweather:400,700,300">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/js/sidr/stylesheets/jquery.sidr.light.css">
+    <script src="/js/jquery-1.10.2.min.js"></script>
+    <script src="/js/underscore-min.js"></script>
+    <script src="/js/sidr/jquery.sidr.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script>
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-44220076-2']);
+      _gaq.push(['_setDomainName', 'mxp.tw']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+  </head>
+  <body class="article-detail">
+    <div id="sidebar"></div>
+    <header class="header">
+      <div class="content-wrap">
+        <h1>使用 Wordpress 建置網站後台</h1>
+        <p class="author">Written by <span class="author"><a href="mailto:im@mxp.tw" title="Have A Geek Heart">莫小屁</a></span>
+        </p>
+      </div>
+    </header>
+    <div id="content">
+      <div class="content-wrap">
+        <article class="article">
+          <section class="content"><h4>前言</h4>
+<blockquote>
+<p>網站開發有前端後端，一般來說前端文案搭配視覺設計就是個好的開始，就像文宣一樣吸引人目光，不過因為有了資料動態需求，所以後端也要兼顧。</p>
+</blockquote>
+<p><span class="more"><sapn></p>
+<h4>主題</h4>
+<p>有後台的網站大概會有以下需求：</p>
+<ol>
+<li>最新消息</li>
+<li>訪客留言</li>
+<li>動態更新內容</li>
+<li>內容分級</li>
+<li>…等等等</li>
+</ol>
+<p>這些需求對會寫程式的人來說也不難，但是如果很常出現，每次都自己寫就累人了！&nbsp;網路上有很多的解決辦法，差別就是會不會用而已。</p>
+<p><a href="http://zh.wikipedia.org/wiki/%E5%86%85%E5%AE%B9%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F" title="Wiki: 內容管理系統（Content Management System，簡稱CMS）是指在一個合作模式下，用於管理工作流程的一套制度。該系統可應用於手工操作中，也可以應用到電腦或網路裡。作為一種中央儲存器（Central Repository)，內容管理系統可將相關內容集中儲存並具有群組管理、版本控制等功能。"><span class="caps">CMS</span>系統</a> 應該也是大家最常碰到的吧，像是 Blog、 論壇、 維基百科… 目前個人覺得資源最多彈性很夠的系統就屬 <a href="http://zh.wikipedia.org/wiki/WordPress" title="Wiki: WordPress是一個以PHP和MySQL為平台的自由開源的部落格軟體和內容管理系統。WordPress具有外掛模組架構和模板系統。Alexa排行「前100萬」的網站中有超過16.7%的網站使用WordPress。到了2011年8月，約22%的新網站採用了WordPress。[5]WordPress是目前網際網路上最流行的部落格系統。">Wordpress</a>&nbsp;了！</p>
+<p>拿它跟前端合作有幾招：</p>
+<ol>
+<li>前端自己也 <code>剛好</code> 熟悉 <span class="caps">WP</span> 系統會改主題，後端調整系統配合前端 (優點: 這樣後端都快沒事了，缺點: 前端<PHP+HTML+CSS+JS>工作複雜化，搶後端飯碗<span class="caps">XD</span>)</li>
+<li>後端將 <span class="caps">WP</span> 系統當 <a href="http://zh.wikipedia.org/wiki/API" title="Wiki: 應用程式介面（英語：Application Programming Interface，簡稱：API），又稱為應用編程介面，就是軟體系統不同組成部分銜接的約定。"><span class="caps">API</span></a> ，盡全力配合前端設計 (優點: 前端<PHP+HTML+CSS+JS>專著視覺設計，設計與實做網站動態，缺點:&nbsp;後端功能賣點變少)</li>
+<li>請前端設計好畫面與操作動態流程，由後端將這一切給合併 (優點: 前端<HTML+CSS>專著視覺設計，缺點: 後端<PHP+HTML+CSS+JS>包山包海)</li>
+<li>…等等等</li>
+</ol>
+<p>這樣看來到底是要後端還是前端包山包海呢？&nbsp;這中間有很多可以討論的。</p>
+<p>最完美的當然是兩方都可以辦到全包再來考慮切割吧…我想 </p>
+<p>有任何一方在技術背景不夠的時候都會造成另一方的問題，所以像我是前端弱就是盡全力支持前端</p>
+<p>選擇 <code>1</code> ： 要剛好熟悉的話可以從 <a href="http://fundesigner.net/wordpress-theme-development-guide/" title="免費 WordPress 佈景主題開發指南電子書">這裡</a>&nbsp;開始</p>
+<p>選擇 <code>2</code> ： 要架好<span class="caps">WP</span>後安裝 <a href="http://wordpress.org/plugins/simple-image-sizes/" title="設定上傳圖片縮圖大小">deapress-json-api</a> 這個外掛 <span class="caps">PS</span>:&nbsp;還有很多很多的好外掛，只是要看需求去多嘗試找一個適合自己的</p>
+<p>選擇 <code>3</code> ： 把 <span class="caps">WP</span>&nbsp;系統的架構摸熟，自己能夠改的得心應手</p>
+<p>順便推薦其他最近測到還不錯的外掛：</p>
+<ol>
+<li><a href="http://wordpress.org/plugins/simple-image-sizes/" title="設定上傳圖片縮圖大小">simple-image-sizes</a></li>
+<li><a href="http://wordpress.org/plugins/yet-another-related-posts-plugin/" title="相關文章功能">yet-another-related-posts-plugin</a></li>
+</ol>
+<p>最近比價的虛擬主機(最低方案)：</p>
+<ul>
+<li><p>國外 </p>
+<ol>
+<li><a href="http://www.hostmonster.com/">Hostmonster</a> </li>
+<li><a href="http://www.bluehost.com/">Bluehost</a> </li>
+<li><a href="http://www.dreamhost.com/">Dreamhost</a> </li>
+<li><a href="http://www.fatcow.com/">FatCow</a> </li>
+<li><p><a href="http://www.godaddy.com/">GoDaddy</a> </p>
+<p><em>價格平均落在 9鎂/月 以下&nbsp;，不過付費方式只有信用卡!</em> </p>
+</li>
+</ol>
+</li>
+<li><p>國內</p>
+<ol>
+<li><a href="http://host.com.tw/">遠振資訊</a> <ul>
+<li>美國: 1200 <span class="caps">NTD</span>/YEAR&nbsp;左右 </li>
+<li>台灣: 3000 <span class="caps">NTD</span>/YEAR&nbsp;左右 </li>
+</ul>
+</li>
+<li><p><a href="http://www.taki.com.tw/">探集數位科技</a>(4000/年) </p>
+<p><em>付費方式就親民一點可以到超商繳還有其他扣款機制</em> </p>
+</li>
+</ol>
+</li>
+</ul>
+<p>各有優劣，台灣的貴但是洽談方便，國外的便宜但就是任人宰割</p>
+<p><span class="caps">CPU</span>-Time 目前查到最高的是探集&nbsp;2X%</p>
+<p>買一個專屬域名可以到：</p>
+<ol>
+<li><a href="http://myname.pchome.com.tw/">PChome</a></li>
+<li><a href="http://www.domainmonster.com/">Domainmonster</a></li>
+</ol>
+<h4>後記</h4>
+<p>工具有很多，會不會用才是重點。</p>
+<p>努力找尋問題的最佳解是資訊人應該要做的事吧！</p>
+<p>幾個月或年後，再回頭看看這些，也許又被推翻了</p>
+</section>
+        </article>
+      </div>
+    </div>
+    <footer>
+      <div class="content-wrap">
+        <div class="nav"><a href="/">« 回首頁</a></div>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+          var disqus_shortname = 'log-mxp';
+          (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+        <noscript>
+          <Please>enable JavaScript to view the<a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></Please><a href="http://disqus.com" class="dsq-brlink">
+            <comments>powered by</comments><span class="logo-disqus">Disqus</span></a>
+        </noscript>
+        <section class="copy">
+          <p>&copy; 2013 莫小屁 &mdash; powered by&nbsp;<a href="https://github.com/jnordberg/wintersmith">Wintersmith</a>
+          </p>
+        </section>
+      </div>
+    </footer>
+  </body>
+</html>

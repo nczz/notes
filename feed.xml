@@ -5,9 +5,88 @@
     <atom:link href="http://log.mxp.tw/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <link>http://log.mxp.tw</link>
     <description>知識得之於人，所以也將自己的筆記放上網希望能有點貢獻，這也是種 OpenSource 吧！ ：）</description>
-    <pubDate>Sat, 28 Sep 2013 17:29:00 +0800</pubDate>
+    <pubDate>Mon, 14 Oct 2013 17:29:00 +0800</pubDate>
     <generator>Wintersmith - https://github.com/jnordberg/wintersmith</generator>
     <language>en</language>
+    <item>
+      <title>使用 Wordpress 建置網站後台</title>
+      <link>http://log.mxp.tw/articles/User_Wordpress_Build_Back_End_Website/</link>
+      <pubDate>Mon, 14 Oct 2013 17:29:00 +0800</pubDate>
+      <guid isPermaLink="true">http://log.mxp.tw/articles/User_Wordpress_Build_Back_End_Website/</guid>
+      <author></author>
+      <description>&lt;h4&gt;前言&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;網站開發有前端後端，一般來說前端文案搭配視覺設計就是個好的開始，就像文宣一樣吸引人目光，不過因為有了資料動態需求，所以後端也要兼顧。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;span class=&quot;more&quot;&gt;&lt;sapn&gt;&lt;/p&gt;
+&lt;h4&gt;主題&lt;/h4&gt;
+&lt;p&gt;有後台的網站大概會有以下需求：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;最新消息&lt;/li&gt;
+&lt;li&gt;訪客留言&lt;/li&gt;
+&lt;li&gt;動態更新內容&lt;/li&gt;
+&lt;li&gt;內容分級&lt;/li&gt;
+&lt;li&gt;…等等等&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;這些需求對會寫程式的人來說也不難，但是如果很常出現，每次都自己寫就累人了！ 網路上有很多的解決辦法，差別就是會不會用而已。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://zh.wikipedia.org/wiki/%E5%86%85%E5%AE%B9%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F&quot; title=&quot;Wiki: 內容管理系統（Content Management System，簡稱CMS）是指在一個合作模式下，用於管理工作流程的一套制度。該系統可應用於手工操作中，也可以應用到電腦或網路裡。作為一種中央儲存器（Central Repository)，內容管理系統可將相關內容集中儲存並具有群組管理、版本控制等功能。&quot;&gt;CMS系統&lt;/a&gt; 應該也是大家最常碰到的吧，像是 Blog、 論壇、 維基百科… 目前個人覺得資源最多彈性很夠的系統就屬 &lt;a href=&quot;http://zh.wikipedia.org/wiki/WordPress&quot; title=&quot;Wiki: WordPress是一個以PHP和MySQL為平台的自由開源的部落格軟體和內容管理系統。WordPress具有外掛模組架構和模板系統。Alexa排行「前100萬」的網站中有超過16.7%的網站使用WordPress。到了2011年8月，約22%的新網站採用了WordPress。[5]WordPress是目前網際網路上最流行的部落格系統。&quot;&gt;Wordpress&lt;/a&gt; 了！&lt;/p&gt;
+&lt;p&gt;拿它跟前端合作有幾招：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;前端自己也 &lt;code&gt;剛好&lt;/code&gt; 熟悉 WP 系統會改主題，後端調整系統配合前端 (優點: 這樣後端都快沒事了，缺點: 前端&lt;PHP+HTML+CSS+JS&gt;工作複雜化，搶後端飯碗XD)&lt;/li&gt;
+&lt;li&gt;後端將 WP 系統當 &lt;a href=&quot;http://zh.wikipedia.org/wiki/API&quot; title=&quot;Wiki: 應用程式介面（英語：Application Programming Interface，簡稱：API），又稱為應用編程介面，就是軟體系統不同組成部分銜接的約定。&quot;&gt;API&lt;/a&gt; ，盡全力配合前端設計 (優點: 前端&lt;PHP+HTML+CSS+JS&gt;專著視覺設計，設計與實做網站動態，缺點: 後端功能賣點變少)&lt;/li&gt;
+&lt;li&gt;請前端設計好畫面與操作動態流程，由後端將這一切給合併 (優點: 前端&lt;HTML+CSS&gt;專著視覺設計，缺點: 後端&lt;PHP+HTML+CSS+JS&gt;包山包海)&lt;/li&gt;
+&lt;li&gt;…等等等&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;這樣看來到底是要後端還是前端包山包海呢？ 這中間有很多可以討論的。&lt;/p&gt;
+&lt;p&gt;最完美的當然是兩方都可以辦到全包再來考慮切割吧…我想 &lt;/p&gt;
+&lt;p&gt;有任何一方在技術背景不夠的時候都會造成另一方的問題，所以像我是前端弱就是盡全力支持前端&lt;/p&gt;
+&lt;p&gt;選擇 &lt;code&gt;1&lt;/code&gt; ： 要剛好熟悉的話可以從 &lt;a href=&quot;http://fundesigner.net/wordpress-theme-development-guide/&quot; title=&quot;免費 WordPress 佈景主題開發指南電子書&quot;&gt;這裡&lt;/a&gt; 開始&lt;/p&gt;
+&lt;p&gt;選擇 &lt;code&gt;2&lt;/code&gt; ： 要架好WP後安裝 &lt;a href=&quot;http://wordpress.org/plugins/simple-image-sizes/&quot; title=&quot;設定上傳圖片縮圖大小&quot;&gt;deapress-json-api&lt;/a&gt; 這個外掛 PS: 還有很多很多的好外掛，只是要看需求去多嘗試找一個適合自己的&lt;/p&gt;
+&lt;p&gt;選擇 &lt;code&gt;3&lt;/code&gt; ： 把 WP 系統的架構摸熟，自己能夠改的得心應手&lt;/p&gt;
+&lt;p&gt;順便推薦其他最近測到還不錯的外掛：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;http://wordpress.org/plugins/simple-image-sizes/&quot; title=&quot;設定上傳圖片縮圖大小&quot;&gt;simple-image-sizes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://wordpress.org/plugins/yet-another-related-posts-plugin/&quot; title=&quot;相關文章功能&quot;&gt;yet-another-related-posts-plugin&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;最近比價的虛擬主機(最低方案)：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;國外 &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.hostmonster.com/&quot;&gt;Hostmonster&lt;/a&gt; &lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.bluehost.com/&quot;&gt;Bluehost&lt;/a&gt; &lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.dreamhost.com/&quot;&gt;Dreamhost&lt;/a&gt; &lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.fatcow.com/&quot;&gt;FatCow&lt;/a&gt; &lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.godaddy.com/&quot;&gt;GoDaddy&lt;/a&gt; &lt;/p&gt;
+&lt;p&gt;&lt;em&gt;價格平均落在 9鎂/月 以下 ，不過付費方式只有信用卡!&lt;/em&gt; &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;國內&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;http://host.com.tw/&quot;&gt;遠振資訊&lt;/a&gt; &lt;ul&gt;
+&lt;li&gt;美國: 1200 NTD/YEAR 左右 &lt;/li&gt;
+&lt;li&gt;台灣: 3000 NTD/YEAR 左右 &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://www.taki.com.tw/&quot;&gt;探集數位科技&lt;/a&gt;(4000/年) &lt;/p&gt;
+&lt;p&gt;&lt;em&gt;付費方式就親民一點可以到超商繳還有其他扣款機制&lt;/em&gt; &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;各有優劣，台灣的貴但是洽談方便，國外的便宜但就是任人宰割&lt;/p&gt;
+&lt;p&gt;CPU-Time 目前查到最高的是探集 2X%&lt;/p&gt;
+&lt;p&gt;買一個專屬域名可以到：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;http://myname.pchome.com.tw/&quot;&gt;PChome&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.domainmonster.com/&quot;&gt;Domainmonster&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4&gt;後記&lt;/h4&gt;
+&lt;p&gt;工具有很多，會不會用才是重點。&lt;/p&gt;
+&lt;p&gt;努力找尋問題的最佳解是資訊人應該要做的事吧！&lt;/p&gt;
+&lt;p&gt;幾個月或年後，再回頭看看這些，也許又被推翻了&lt;/p&gt;
+</description>
+    </item>
     <item>
       <title>使用 Bitnami 服務安裝 Gitlab</title>
       <link>http://log.mxp.tw/articles/Build_Gitlab_With_Bitnami/</link>

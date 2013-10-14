@@ -1,6 +1,6 @@
 //Avoid boring
 function addSideBar(){
-    $.get('/feed.xml', function(data) {
+    $.get('/feed.xml?t='+Date.now(), function(data) {
 		var $xml = $(data),itemArr = [],str = '';
 		$xml.find("item").each(function() {
 			var $this = $(this),
